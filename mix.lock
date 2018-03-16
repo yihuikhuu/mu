@@ -1,0 +1,3 @@
+%{
+  "procket": {:hex, :procket, "0.9.3", "593e907645307bc854ce3532f3f9c07987d8dc9848180cd2ee408fd92b22cc1e", [:rebar3], [], "hexpm"},
+}
