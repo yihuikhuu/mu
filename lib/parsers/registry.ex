@@ -1,5 +1,6 @@
 defmodule Parser.Registry do
   use GenServer
+
   @doc """
   Starts the registry.
   """

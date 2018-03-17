@@ -1,6 +1,11 @@
 defmodule Parser do
+  @moduledoc """
+  This is the base Parser module. 
+  It acts as the initial point of contact for all incoming commands and passes control to the appropriate module.
+  """
+
   def parse(command) do
-    IO.puts command
+    IO.puts(command)
     process(command, [])
   end
 
@@ -8,7 +13,7 @@ defmodule Parser do
     if command do
       String.trim(command, "\n")
       |> String.split(" ", parts: 2)
-      |> fn [curr, rest] -> {get_parser(curr), curr, rest} end.()
+      |> (fn [curr, tail] -> apply(get_parser(curr), :parse, [curr, tail]) end).()
       |> IO.inspect()
     end
   end
@@ -20,4 +25,3 @@ defmodule Parser do
     end
   end
 end
-
