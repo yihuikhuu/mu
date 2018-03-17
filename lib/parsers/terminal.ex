@@ -1,2 +1,2 @@
-defmodule Parser.Terminal do
+defmodule Mu.Parser.Terminal do
 end

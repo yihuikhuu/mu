@@ -1,4 +1,4 @@
-defmodule Parser.Literal do
+defmodule Mu.Parser.Literal do
   def parse(command, tail) do
     IO.puts("Literal: #{command}")
     SystemInput.string("good morning")

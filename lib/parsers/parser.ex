@@ -1,4 +1,4 @@
-defmodule Parser do
+defmodule Mu.Parser do
   @moduledoc """
   This is the base Parser module. 
   It acts as the initial point of contact for all incoming commands and passes control to the appropriate module.
@@ -19,8 +19,8 @@ defmodule Parser do
   end
 
   def get_parser(curr) do
-    case Parser.Registry.lookup(curr) do
-      nil -> Parser.Literal
+    case Mu.Parser.Registry.lookup(curr) do
+      nil -> Mu.Parser.Literal
       parser -> parser
     end
   end

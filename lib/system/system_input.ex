@@ -1,4 +1,4 @@
-defmodule Mu.System.Input do
+defmodule SystemInput do
   @moduledoc """
   This module handles the execution of keystrokes via Applescript execution
   """

@@ -1,4 +1,4 @@
-defmodule Parser.Core do
+defmodule Mu.Parser.Core do
   @moduledoc """
   This parser module contains core functionality that is applicable to all applications 
 

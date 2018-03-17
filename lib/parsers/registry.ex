@@ -1,4 +1,4 @@
-defmodule Parser.Registry do
+defmodule Mu.Parser.Registry do
   use GenServer
 
   @doc """
