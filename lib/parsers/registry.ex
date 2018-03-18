@@ -5,11 +5,15 @@ defmodule Mu.Parser.Registry do
   Starts the registry.
   """
   def start_link do
-    GenServer.start_link(__MODULE__, %{}, name: :parser_registry)
+    GenServer.start_link(__MODULE__, %{}, name: Mu.Parser.Registry)
+  end
+
+  def start_link(opts) do
+    GenServer.start_link(__MODULE__, %{}, opts)
   end
 
   def lookup(command) do
-    GenServer.call(:parser_registry, {:lookup, command})
+    GenServer.call(Mu.Parser.Registry, {:lookup, command})
   end
 
   ## Server Callbacks

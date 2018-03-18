@@ -9,8 +9,9 @@ defmodule Mu.Supervisor do
 
   def init(_) do
     children = [
-      worker(Mu.Parser.Registry, []),
-      Mu.Monitor
+      {Mu.Parser.Registry, name: Mu.Parser.Registry},
+      {Task.Supervisor, name: Mu.Monitor.TaskSupervisor},
+      {Mu.Monitor, name: Mu.Monitor}
     ]
 
     Supervisor.init(children, strategy: :one_for_one)

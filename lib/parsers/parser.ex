@@ -5,7 +5,7 @@ defmodule Mu.Parser do
   """
 
   def parse(command) do
-    IO.puts(command)
+    IO.inspect Process.registered()
     process(command, [])
   end
 

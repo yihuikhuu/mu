@@ -383,15 +383,9 @@ defmodule Mu.System.Input do
     ])
   end
 
-  def key_shift(key) do
+  def key_modifier(key) do
     System.cmd("osascript", ["-e", "tell application \"System Events\"
                              key code #{@key_codes[key]} using command down
                              end tell"])
-  end
-
-  def key_command(key) do
-  end
-
-  def key_command_shift(key) do
   end
 end
