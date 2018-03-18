@@ -27,10 +27,12 @@ defmodule Mu.Monitor do
 
   def serve(client) do
     case :gen_tcp.recv(client, 0) do
-      {:ok, data} -> 
+      {:ok, data} ->
         parse(to_string(data))
         serve(client)
-      {:error, reason} -> :gen_tcp.close(client)
+
+      {:error, reason} ->
+        :gen_tcp.close(client)
     end
   end
 

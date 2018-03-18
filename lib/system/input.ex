@@ -1,4 +1,4 @@
-defmodule SystemInput do
+defmodule System.Input do
   @moduledoc """
   This module handles the execution of keystrokes via Applescript execution
   """
@@ -372,26 +372,20 @@ defmodule SystemInput do
   def string(string) do
     System.cmd("osascript", [
       "-e",
-      "tell application \"System Events\" to keystroke \"#{string}\""
+      ~s(tell application "System Events" to keystroke "#{string}")
     ])
   end
 
   def key(key) do
     System.cmd("osascript", [
       "-e",
-      "tell application \"System Events\" to key code #{@key_codes[key]}"
+      ~s(tell application "System Events" to key code #{@key_codes[key]})
     ])
   end
 
-  def key_shift(key) do
-    System.cmd("osascript", ["-e", "tell application \"System Events\"
+  def key(key, modifiers) do
+    System.cmd("osascript", ["-e", ~s(tell application "System Events"
                              key code #{@key_codes[key]} using command down
-                             end tell"])
-  end
-
-  def key_command(key) do
-  end
-
-  def key_command_shift(key) do
+                             end tell)])
   end
 end
