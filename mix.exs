@@ -24,7 +24,9 @@ defmodule Mu.MixProject do
     [
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:recase, "~> 0.2"},
+      {:distillery, "~> 1.5", runtime: false}
     ]
   end
 end

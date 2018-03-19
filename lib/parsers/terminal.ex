@@ -1,6 +1,6 @@
-defmodule Parser.Terminal do
+defmodule Mu.Parser.Terminal do
   require Logger
-  @behaviour Parser.Behaviour
+  @behaviour Mu.Parser.Behaviour
   @moduledoc """
   This parser module contains functionality specific to the terminal application
   """
@@ -32,6 +32,10 @@ defmodule Parser.Terminal do
     }
   }
 
+  def commands() do
+    @commands
+  end
+
   def move_left(number) do
     System.Input.key(:left)
   end
@@ -41,7 +45,7 @@ defmodule Parser.Terminal do
   end
 
   def move_up(number) do
-    Systen.Input.key(:up)
+    System.Input.key(:up)
   end
 
   def move_down(number) do

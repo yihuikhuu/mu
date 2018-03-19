@@ -1,4 +1,4 @@
-defmodule Parser.Behaviour do
+defmodule Mu.Parser.Behaviour do
   @doc "Returns the list of of commands implemented by this parser module"
-  @callback commands() :: list
+  @callback commands() :: map
 end

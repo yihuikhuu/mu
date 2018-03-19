@@ -6,20 +6,21 @@ defmodule Mu.Parser.Registry do
   Starts the registry.
   """
   def start_link do
-    Logger.info(Application.app_dir(:mu))
-    GenServer.start_link(__MODULE__, %{}, name: Mu.Parser.Registry)
+    GenServer.start_link(__MODULE__, load_parsers(), name: Mu.Parser.Registry)
   end
 
   def start_link(opts) do
-    Logger.info(Application.app_dir(:mu))
-    GenServer.start_link(__MODULE__, %{}, opts)
+    GenServer.start_link(__MODULE__, load_parsers(), opts)
   end
 
   def load_parsers do
-    case File.read("parsers.json") do
-      {:ok, json_parsers} -> json_parsers
-      {:error, reason} -> %{}
-    end
+    {:ok, json} = File.read(Application.app_dir(:mu) <> "/priv/parsers.json")
+
+    Poison.Parser.parse!(json)
+    |> Enum.filter(fn x -> x["use"] end)
+    |> Enum.reduce(%{}, fn x, acc ->
+      Map.merge(apply(String.to_existing_atom("Elixir." <> x["name"]), :commands, []), acc)
+    end)
   end
 
   def lookup(command) do

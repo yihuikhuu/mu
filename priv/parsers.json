@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Mu.Parser.Terminal",
+    "use": true
+  },
+  {
+    "name": "Mu.Parser.Code",
+    "use": true
+  },
+  {
+    "name": "Mu.Parser.Core",
+    "use": true
+  },
+  {
+    "name": "Mu.Parser.Literal",
+    "use": true
+  }
+]
+

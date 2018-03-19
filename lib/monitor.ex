@@ -1,4 +1,6 @@
 defmodule Mu.Monitor do
+  require Logger
+
   def child_spec(_args) do
     %{
       id: __MODULE__,
@@ -32,6 +34,7 @@ defmodule Mu.Monitor do
         serve(client)
 
       {:error, reason} ->
+        Logger.info(reason)
         :gen_tcp.close(client)
     end
   end

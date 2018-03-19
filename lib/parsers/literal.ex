@@ -1,6 +1,6 @@
-defmodule Parser.Literal do
+defmodule Mu.Parser.Literal do
   require Logger
-  @behaviour Parser.Behaviour
+  @behaviour Mu.Parser.Behaviour
   @moduledoc """
   This parser module contains basic literal functionality, i.e. literal transcription of commands.
   """
@@ -14,12 +14,16 @@ defmodule Parser.Literal do
     }
   }
 
+  def commands() do
+    @commands
+  end
+
   def parse(command, tail) do
     Logger.info("Literal: #{command}")
     literal(tail)
   end
 
   def literal(tail) do
-    SystemInput.string(tail)
+    System.Input.string(tail)
   end
 end
