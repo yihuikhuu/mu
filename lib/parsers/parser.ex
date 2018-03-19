@@ -72,6 +72,7 @@ defmodule Mu.Parser do
                   [
                     %{
                       :grammar => :unconstrained,
+                      :module => command[:module],
                       :function => command[:function],
                       :arguments => tail
                     }
@@ -83,6 +84,7 @@ defmodule Mu.Parser do
                 tail,
                 %{
                   :grammar => :text,
+                  :module => command[:module],
                   :function => command[:function]
                 },
                 commands
@@ -93,6 +95,7 @@ defmodule Mu.Parser do
                 tail,
                 %{
                   :grammar => :numeric,
+                  :module => command[:module],
                   :function => command[:function]
                 },
                 commands
@@ -103,6 +106,7 @@ defmodule Mu.Parser do
                 tail,
                 %{
                   :grammar => :single,
+                  :module => command[:module],
                   :function => command[:function]
                 },
                 commands
