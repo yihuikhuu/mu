@@ -10,6 +10,16 @@ defmodule Mu.Parser do
     String.trim(text, "\n")
     |> String.downcase()
     |> process(%{}, [])
+    |> execute()
+  end
+
+  def execute(commands) do
+    Enum.each(commands, fn command ->
+      case command[:arguments] do
+        nil -> apply(command.module, command.function, [])
+        arguments -> apply(command.module, command.function, [command.arguments])
+      end
+    end)
   end
 
   def process(text, context, commands) do
@@ -21,9 +31,10 @@ defmodule Mu.Parser do
         [curr] -> handle_word(curr, nil, context, commands)
       end
     else
-      IO.inspect(text)
-      IO.inspect(context)
-      IO.inspect(commands)
+      case context[:grammar] do
+        nil -> commands
+        grammar -> commands ++ [context]
+      end
     end
   end
 
@@ -48,19 +59,21 @@ defmodule Mu.Parser do
             handle_word(curr, tail, %{}, commands)
 
           _ ->
-            process(tail, %{}, commands ++ [Map.put(context, :arguments, curr)])
+            process(
+              tail,
+              %{},
+              commands ++ [Map.put(context, :arguments, String.to_integer(curr))]
+            )
         end
 
       _ ->
         command = get_command(curr)
 
         if command do
-          IO.inspect(command)
-
           commands =
-            cond do
-              context -> commands ++ [context]
-              true -> commands
+            case context[:grammar] do
+              nil -> commands
+              grammar -> commands ++ [context]
             end
 
           case command[:grammar] do
@@ -132,9 +145,6 @@ defmodule Mu.Parser do
           end
         end
     end
-  end
-
-  def execute(commands) do
   end
 
   def get_command(curr) do

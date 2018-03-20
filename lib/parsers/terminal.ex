@@ -36,19 +36,19 @@ defmodule Mu.Parser.Terminal do
     @commands
   end
 
-  def move_left(number) do
-    System.Input.key(:left)
+  def move_left(times \\ 1) do
+    System.Input.key(:left, times)
   end
 
-  def move_right(number) do
-    System.Input.key(:right)
+  def move_right(times \\ 1) do
+    System.Input.key(:right, times)
   end
 
-  def move_up(number) do
-    System.Input.key(:up)
+  def move_up(times \\ 1) do
+    System.Input.key(:up, times)
   end
 
-  def move_down(number) do
-    System.Input.key(:down)
+  def move_down(times \\ 1) do
+    System.Input.key(:down, times)
   end
 end

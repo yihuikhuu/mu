@@ -376,10 +376,14 @@ defmodule System.Input do
     ])
   end
 
-  def key(key) do
+  def key(key, times \\ 1) do
     System.cmd("osascript", [
       "-e",
-      ~s(tell application "System Events" to key code #{@key_codes[key]})
+      ~s(tell application "System Events"
+          repeat #{times} times 
+           key code #{@key_codes[key]}
+          end repeat
+        end tell)
     ])
   end
 
