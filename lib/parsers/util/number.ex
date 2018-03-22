@@ -50,7 +50,13 @@ defmodule Mu.Parser.Util.Number do
   ]
 
   def parse(text) do
-    process(text, nil, 0)
+    Logger.info("Number parse: #{text}")
+
+    if text do
+      process(text, nil, 0)
+    else
+      nil
+    end
   end
 
   def process(text, prior, total) do
@@ -76,15 +82,16 @@ defmodule Mu.Parser.Util.Number do
       end
 
     if curr_value do
-      Logger.info("Current value: #{curr_value}")
-
       prior =
         cond do
           prior == nil ->
             curr_value
 
           total < 100 && prior < 100 && curr_value < 100 ->
-            prior * 100 + curr_value
+            cond do
+              curr_value > 0 && curr_value < 10 -> prior + curr_value
+              true -> prior * 100 + curr_value
+            end
 
           prior > curr_value ->
             prior + curr_value
@@ -92,9 +99,6 @@ defmodule Mu.Parser.Util.Number do
           true ->
             prior * curr_value
         end
-
-      Logger.info("Prior value: #{prior}")
-      Logger.info("Total value: #{total}")
 
       if Enum.member?(@multiplier, curr) do
         process(tail, nil, total + prior)

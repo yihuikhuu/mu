@@ -54,38 +54,52 @@ defmodule Mu.Parser.Code do
     @commands
   end
 
-  def snake_case(text) do
-    Recase.to_snake(text)
-    |> System.Input.string()
+  def snake_case(text \\ nil) do
+    if text do
+      Recase.to_snake(text)
+      |> System.Input.string()
+    end
   end
 
-  def constant_case(text) do
-    Recase.to_constant(text)
-    |> System.Input.string()
+  def constant_case(text \\ nil) do
+    if text do
+      Recase.to_constant(text)
+      |> System.Input.string()
+    end
   end
 
-  def camel_case(text) do
-    Recase.to_camel(text)
-    |> System.Input.string()
+  def camel_case(text \\ nil) do
+    if text do
+      Recase.to_camel(text)
+      |> System.Input.string()
+    end
   end
 
-  def pascal_case(text) do
-    Recase.to_pascal(text)
-    |> System.Input.string()
+  def pascal_case(text \\ nil) do
+    if text do
+      Recase.to_pascal(text)
+      |> System.Input.string()
+    end
   end
 
-  def dash_case(text) do
-    Recase.to_kebab(text)
-    |> System.Input.string()
+  def dash_case(text \\ nil) do
+    if text do
+      Recase.to_kebab(text)
+      |> System.Input.string()
+    end
   end
 
-  def dot_case(text) do
-    Recase.to_dot(text)
-    |> System.Input.string()
+  def dot_case(text \\ nil) do
+    if text do
+      Recase.to_dot(text)
+      |> System.Input.string()
+    end
   end
 
-  def path_string(text) do
-    Recase.to_path(text)
-    |> System.Input.string()
+  def path_string(text \\ nil) do
+    if text do
+      Recase.to_path(text)
+      |> System.Input.string()
+    end
   end
 end

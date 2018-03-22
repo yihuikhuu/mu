@@ -37,18 +37,22 @@ defmodule Mu.Parser.Terminal do
   end
 
   def move_left(times \\ 1) do
+    Logger.info(times)
     System.Input.key(:left, times)
   end
 
   def move_right(times \\ 1) do
+    Logger.info(times)
     System.Input.key(:right, times)
   end
 
   def move_up(times \\ 1) do
+    Logger.info(times)
     System.Input.key(:up, times)
   end
 
   def move_down(times \\ 1) do
+    Logger.info(times)
     System.Input.key(:down, times)
   end
 end
