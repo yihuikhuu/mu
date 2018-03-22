@@ -1,4 +1,4 @@
-defmodule Mu.Parser.Utils.Number do
+defmodule Mu.Parser.Util.Number do
   require Logger
 
   @moduledoc """
@@ -80,11 +80,17 @@ defmodule Mu.Parser.Utils.Number do
 
       prior =
         cond do
-          prior == nil -> curr_value
+          prior == nil ->
+            curr_value
+
           total < 100 && prior < 100 && curr_value < 100 ->
             prior * 100 + curr_value
-          prior > curr_value -> prior + curr_value
-          true -> prior * curr_value
+
+          prior > curr_value ->
+            prior + curr_value
+
+          true ->
+            prior * curr_value
         end
 
       Logger.info("Prior value: #{prior}")

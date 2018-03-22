@@ -33,6 +33,7 @@ defmodule Mu.Parser do
     else
       case context[:grammar] do
         nil -> commands
+        :numeric -> commands ++ [%{context | :arguments => Mu.Parser.Util.Number.parse(context[:arguments])}]
         grammar -> commands ++ [context]
       end
     end
@@ -47,6 +48,7 @@ defmodule Mu.Parser do
 
       # Special case for numeric parameters
       # We want to take the next number; Or skip the argument if next word is not a number
+      """
       :numeric ->
         case Float.parse(curr) do
           :error ->
@@ -65,14 +67,17 @@ defmodule Mu.Parser do
               commands ++ [Map.put(context, :arguments, String.to_integer(curr))]
             )
         end
+        """
 
       _ ->
         command = get_command(curr)
 
         if command do
+          IO.inspect(context)
           commands =
             case context[:grammar] do
               nil -> commands
+              :numeric -> commands ++ [%{context | :argument => Mu.Parser.Util.Number.parse(context[:arguments])}]
               grammar -> commands ++ [context]
             end
 
