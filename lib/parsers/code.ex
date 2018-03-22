@@ -15,7 +15,7 @@ defmodule Mu.Parser.Code do
     "changshi" => %{
       :description => "Write text in constant case",
       :module => __MODULE__,
-      :function => :upper_snake_case,
+      :function => :constant_case,
       :grammar => :text
     },
     "luoshi" => %{

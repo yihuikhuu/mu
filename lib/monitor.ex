@@ -15,8 +15,11 @@ defmodule Mu.Monitor do
     end
 
     case :gen_tcp.listen(0, [{:ifaddr, {:local, "/tmp/mu.sock"}}, active: false]) do
-      {:ok, socket} -> loop(socket)
-      {:error, reason} -> IO.puts("Error #{reason}")
+      {:ok, socket} ->
+        Task.Supervisor.start_child(Mu.Monitor.TaskSupervisor, fn -> loop(socket) end)
+
+      {:error, reason} ->
+        IO.puts("Error #{reason}")
     end
   end
 

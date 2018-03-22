@@ -50,7 +50,7 @@ def main(argv):
                 last_command += 1
 
                 c.execute("BEGIN TRANSACTION;")
-                c.execute(f"INSERT INTO ZTRIGGER (Z_ENT, Z_OPT, ZISUSER, ZCOMMAND, ZCURRENTCOMMAND, ZDESC, ZSPOKENLANGUAGE, ZSTRING) VALUES (4, 1, 1, {id}, {id}, 'mu', 'en_AU','{key}');")
+                c.execute(f"INSERT INTO ZTRIGGER (Z_ENT, Z_OPT, ZISUSER, ZCOMMAND, ZCURRENTCOMMAND, ZDESC, ZSPOKENLANGUAGE, ZSTRING) VALUES (4, 1, 1, {id}, {id}, 'mu', 'en_AU','{key} /!Text!/');")
                 c.execute(f"INSERT INTO ZACTION (Z_ENT, Z_OPT, ZISUSER, ZCOMMAND, ZCURRENTCOMMAND, ZOSLANGUAGE, ZTEXT) VALUES (1, 1, 1, {id}, {id}, 'en_US', 'echo -e \"{key} ${{varText}}\" | nc -U /tmp/mu.sock');")
                 c.execute(f"INSERT INTO ZCOMMAND(Z_ENT, Z_OPT, ZACTIVE, ZAPPVERSION, ZCOMMANDID, ZDISPLAY, ZENGINEID, ZISCOMMAND, ZISCORRECTION, ZISDICTATION, ZISSLEEP, ZISSPELLING, ZVERSION, ZCURRENTACTION, ZCURRENTTRIGGER, ZLOCATION, \
                   ZAPPBUNDLE, ZOSLANGUAGE, ZSPOKENLANGUAGE, ZTYPE, ZVENDOR) VALUES (2, 4, 1, 0, {command_id}, \

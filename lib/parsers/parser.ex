@@ -85,42 +85,20 @@ defmodule Mu.Parser do
                   [
                     %{
                       :grammar => :unconstrained,
-                      :module => command[:module],
-                      :function => command[:function],
+                      :module => command.module,
+                      :function => command.function,
                       :arguments => tail
                     }
                   ]
               )
 
-            :text ->
+            grammar ->
               process(
                 tail,
                 %{
-                  :grammar => :text,
-                  :module => command[:module],
-                  :function => command[:function]
-                },
-                commands
-              )
-
-            :numeric ->
-              process(
-                tail,
-                %{
-                  :grammar => :numeric,
-                  :module => command[:module],
-                  :function => command[:function]
-                },
-                commands
-              )
-
-            :single ->
-              process(
-                tail,
-                %{
-                  :grammar => :single,
-                  :module => command[:module],
-                  :function => command[:function]
+                  :grammar => grammar,
+                  :module => command.module,
+                  :function => command.function
                 },
                 commands
               )
