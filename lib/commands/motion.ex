@@ -1,4 +1,4 @@
-defmodule Mu.Commands.Vim do
+defmodule Mu.Commands.Motion do
   require Logger
   alias Mu.Core.System.Input, as: Input
 
@@ -112,8 +112,14 @@ defmodule Mu.Commands.Vim do
   end
 
   def move_to(number \\ 1) do
-    Input.key(:escape)
-    Input.string("#{number}G")
+    # Safe to use to_atom here as we know that the potenial characters are from 0-9
+    keys =
+      Integer.digits(number)
+      |> Enum.reduce([:escape], fn x, acc ->
+        acc ++ [x |> Integer.to_string() |> String.to_atom()]
+      end)
+    
+    Input.key_list(keys ++ [:G])
   end
 
   def forward_word(times \\ 1) do
@@ -135,7 +141,9 @@ defmodule Mu.Commands.Vim do
   end
 
   def insert_above do
-    Input.key_list([:escape, :O])
+    # Input.key_list([:escape, :O])
+    Input.key(:escape)
+    Input.string("O")
   end
 
   def insert_below do
@@ -147,10 +155,10 @@ defmodule Mu.Commands.Vim do
   end
 
   def select_word do
-    Input.key([:escape, :v, :i, :w])
+    Input.key_list([:escape, :v, :i, :w])
   end
 
   def select_line do
-    Input.key([:escape, :V])
+    Input.key_list([:escape, :V])
   end
 end

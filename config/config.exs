@@ -34,6 +34,6 @@ config :mu,
     %{name: "Terminal", use: true},
     %{name: "Format", use: true},
     %{name: "Symbols", use: true},
-    %{name: "Vim", use: true},
+    %{name: "Motion", use: true},
     %{name: "Literal", use: true}
   ]

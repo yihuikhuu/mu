@@ -14,7 +14,7 @@ defmodule Mu.Commands.Symbols do
       :function => :space,
       :grammar => :single
     },
-    "háng" => %{
+    "duanhang" => %{
       :description => "line break",
       :module => __MODULE__,
       :function => :line_break,
@@ -26,19 +26,19 @@ defmodule Mu.Commands.Symbols do
       :function => :tab,
       :grammar => :single
     },
-    "yuan" => %{
+    "yuangua" => %{
       :description => "brackets",
       :module => __MODULE__,
       :function => :brackets,
       :grammar => :single
     },
-    "hua" => %{
+    "huagua" => %{
       :description => "braces",
       :module => __MODULE__,
       :function => :braces,
       :grammar => :single
     },
-    "fang" => %{
+    "fanggua" => %{
       :description => "square brackets",
       :module => __MODULE__,
       :function => :square_brackets,
