@@ -1,5 +1,6 @@
 defmodule Mu.Core.Parser do
   require Logger
+  alias Mu.Core.Util.Number, as: Number
 
   @moduledoc """
   This is the base Parser module. 
@@ -32,16 +33,7 @@ defmodule Mu.Core.Parser do
         [curr] -> handle_word(curr, nil, context, commands)
       end
     else
-      case context[:grammar] do
-        nil ->
-          commands
-
-        :numeric ->
-          commands ++ [%{context | :arguments => Mu.Core.Util.Number.parse(context[:arguments])}]
-
-        _ ->
-          commands ++ [context]
-      end
+      process_context(context, commands)
     end
   end
 
@@ -50,17 +42,7 @@ defmodule Mu.Core.Parser do
     IO.inspect(command)
 
     if command do
-      commands =
-        case context[:grammar] do
-          nil ->
-            commands
-
-          :numeric ->
-            commands ++ [%{context | :argument => Mu.Core.Util.Number.parse(context[:arguments])}]
-
-          _ ->
-            commands ++ [context]
-        end
+      commands = process_context(context, commands)
 
       case command[:grammar] do
         :unconstrained ->
@@ -127,7 +109,20 @@ defmodule Mu.Core.Parser do
     end
   end
 
-  def get_command(curr) do
+  defp process_context(context, commands) do
+    case context[:grammar] do
+      nil ->
+        commands
+
+      :numeric ->
+        commands ++ [%{context | :arguments => Number.parse(context[:arguments])}]
+
+      _ ->
+        commands ++ [context]
+    end
+  end
+
+  defp get_command(curr) do
     case Mu.Core.ParserRegistry.lookup(curr) do
       nil -> nil
       parser -> parser

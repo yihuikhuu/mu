@@ -57,42 +57,26 @@ defmodule Mu.Commands.Symbols do
   end
 
   def space do
-    Input.key(:escape)
-    Input.key(:a)
-    Input.key(:space)
+    Input.key_list([:escape, :a, :space])
   end
 
   def line_break do
-    Input.key(:escape)
-    Input.key(:a)
-    Input.key(:enter)
+    Input.key_list([:escape, :a, :enter])
   end
 
   def brackets do
-    Input.key(:escape)
-    Input.key(:a)
-    Input.string("()")
-    Input.key(:left)
+    Input.key_list([:escape, :a, :"(", :")", :left])
   end
 
   def braces do
-    Input.key(:escape)
-    Input.key(:a)
-    Input.string("{}")
-    Input.key(:left)
+    Input.key_list([:escape, :a, :"{", :"}", :left])
   end
 
   def square_brackets do
-    Input.key(:escape)
-    Input.key(:a)
-    Input.string("[]")
-    Input.key(:left)
+    Input.key_list([:escape, :a, :"[", :"]", :left])
   end
 
   def dot do
-    Input.key(:escape)
-    Input.key(:a)
-    Input.string(".")
-    Input.key(:left)
+    Input.key_list([:escape, :a, :., :left])
   end
 end

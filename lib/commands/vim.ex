@@ -127,13 +127,11 @@ defmodule Mu.Commands.Vim do
   end
 
   def start_line do
-    Input.key(:escape)
-    Input.string("^")
+    Input.key_list([:escape, :^])
   end
 
   def end_line do
-    Input.key(:escape)
-    Input.string("$")
+    Input.key_list([:escape, :"$"])
   end
 
   def insert_above do

@@ -1,4 +1,6 @@
 defmodule Mu.Core.System.Input do
+  require Logger
+
   @moduledoc """
   This module handles the execution of keystrokes via Applescript execution
   """
@@ -411,16 +413,25 @@ defmodule Mu.Core.System.Input do
     commands =
       Enum.reduce(keys, "", fn x, acc ->
         command =
-          "key code #{@key_codes[x]}" <>
+          "key code " <>
             cond do
-              Map.has_key?(@key_codes, x) -> ""
-              Map.has_key?(@key_codes_shift, x) -> " using shift down"
-              Map.has_key?(@key_codes_option, x) -> " using option down"
-              Map.has_key?(@key_codes_option_shift, x) -> " using {shift down, option down}"
+              Map.has_key?(@key_codes, x) ->
+                "#{@key_codes[x]}"
+
+              Map.has_key?(@key_codes_shift, x) ->
+                "#{@key_codes_shift[x]} using shift down"
+
+              Map.has_key?(@key_codes_option, x) ->
+                "#{@key_codes_option[x]} using option down"
+
+              Map.has_key?(@key_codes_option_shift, x) ->
+                "#{@key_codes_option_shift[x]} using {shift down, option down}"
             end
 
         acc <> command <> "\n"
       end)
+
+    Logger.info(commands)
 
     System.cmd("osascript", [
       "-e",
