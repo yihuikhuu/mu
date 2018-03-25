@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Mu.Commands.Terminal",
+    "use": true
+  },
+  {
+    "name": "Mu.Commands.Format",
+    "use": true
+  },
+  {
+    "name": "Mu.Commands.Symbols",
+    "use": true
+  },
+  {
+    "name": "Mu.Commands.Vim",
+    "use": true
+  },
+  {
+    "name": "Mu.Commands.Literal",
+    "use": true
+  }
+]

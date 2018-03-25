@@ -1,4 +1,4 @@
-defmodule Mu.Parser.Util.Number do
+defmodule Mu.Core.Util.Number do
   require Logger
 
   @moduledoc """
@@ -50,8 +50,6 @@ defmodule Mu.Parser.Util.Number do
   ]
 
   def parse(text) do
-    Logger.info("Number parse: #{text}")
-
     if text do
       process(text, nil, 0)
     else

@@ -1,8 +1,10 @@
-defmodule Mu.Parser.Code do
+defmodule Mu.Commands.Format do
   require Logger
-  @behaviour Mu.Parser.Behaviour
+  alias Mu.Core.System.Input, as: Input
+
+  @behaviour Mu.Core.CommandBehaviour
   @moduledoc """
-  This parser module handles commands specific to coding
+  This parser module handles commands specific to string formatting for coding purposes
   """
 
   @commands %{
@@ -57,49 +59,49 @@ defmodule Mu.Parser.Code do
   def snake_case(text \\ nil) do
     if text do
       Recase.to_snake(text)
-      |> System.Input.string()
+      |> Input.string()
     end
   end
 
   def constant_case(text \\ nil) do
     if text do
       Recase.to_constant(text)
-      |> System.Input.string()
+      |> Input.string()
     end
   end
 
   def camel_case(text \\ nil) do
     if text do
       Recase.to_camel(text)
-      |> System.Input.string()
+      |> Input.string()
     end
   end
 
   def pascal_case(text \\ nil) do
     if text do
       Recase.to_pascal(text)
-      |> System.Input.string()
+      |> Input.string()
     end
   end
 
   def dash_case(text \\ nil) do
     if text do
       Recase.to_kebab(text)
-      |> System.Input.string()
+      |> Input.string()
     end
   end
 
   def dot_case(text \\ nil) do
     if text do
       Recase.to_dot(text)
-      |> System.Input.string()
+      |> Input.string()
     end
   end
 
   def path_string(text \\ nil) do
     if text do
       Recase.to_path(text)
-      |> System.Input.string()
+      |> Input.string()
     end
   end
 end

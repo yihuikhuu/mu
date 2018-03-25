@@ -1,4 +1,4 @@
-defmodule Mu.Monitor do
+defmodule Mu.Core.Monitor do
   require Logger
 
   def child_spec(_args) do
@@ -25,7 +25,10 @@ defmodule Mu.Monitor do
 
   def loop(socket) do
     {:ok, client} = :gen_tcp.accept(socket)
-    {:ok, pid} = Task.Supervisor.start_child(Mu.Monitor.TaskSupervisor, fn -> serve(client) end)
+
+    {:ok, pid} =
+      Task.Supervisor.start_child(Mu.Core.Monitor.TaskSupervisor, fn -> serve(client) end)
+
     :ok = :gen_tcp.controlling_process(client, pid)
     loop(socket)
   end
@@ -43,6 +46,6 @@ defmodule Mu.Monitor do
   end
 
   def parse(packet) do
-    Mu.Parser.parse(packet)
+    Mu.Core.Parser.parse(packet)
   end
 end

@@ -1,4 +1,4 @@
-defmodule Mu.System.Input do
+defmodule Mu.Core.System.Input do
   @moduledoc """
   This module handles the execution of keystrokes via Applescript execution
   """
@@ -369,23 +369,64 @@ defmodule Mu.System.Input do
     :"‚" => @key_codes[:"0"]
   }
 
+  def current_application do
+    System.cmd("osascript", [
+      "-e",
+      ~s(tell application "System Events" to get name of first process where it is frontmost")
+    ])
+    |> elem(0)
+    |> String.trim("\n")
+  end
+
   def string(string) do
     System.cmd("osascript", [
       "-e",
-      "tell application \"System Events\" to keystroke \"#{string}\""
+      ~s(tell application "System Events" to keystroke "#{string}")
     ])
   end
 
-  def key(key) do
+  def key(key, times \\ 1) do
     System.cmd("osascript", [
       "-e",
-      "tell application \"System Events\" to key code #{@key_codes[key]}"
+      ~s(tell application "System Events"
+          repeat #{times} times 
+           key code #{@key_codes[key]}
+          end repeat
+        end tell)
     ])
   end
 
-  def key_modifier(key) do
-    System.cmd("osascript", ["-e", "tell application \"System Events\"
-                             key code #{@key_codes[key]} using command down
-                             end tell"])
+  def key_command(key, times \\ 1) do
+    System.cmd("osascript", [
+      "-e",
+      ~s(tell application "System Events"
+          repeat #{times} times
+           key code #{@key_codes[key]} using command down
+          end repeat
+      end tell)
+    ])
+  end
+
+  def key_list(keys) do
+    commands =
+      Enum.reduce(keys, "", fn x, acc ->
+        command =
+          "key code #{@key_codes[x]}" <>
+            cond do
+              Map.has_key?(@key_codes, x) -> ""
+              Map.has_key?(@key_codes_shift, x) -> " using shift down"
+              Map.has_key?(@key_codes_option, x) -> " using option down"
+              Map.has_key?(@key_codes_option_shift, x) -> " using {shift down, option down}"
+            end
+
+        acc <> command <> "\n"
+      end)
+
+    System.cmd("osascript", [
+      "-e",
+      ~s(tell application "System Events"
+          #{commands}
+        end tell)
+    ])
   end
 end
