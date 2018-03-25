@@ -30,7 +30,7 @@ def main(argv):
         commands = json.load(f)
 
         words = ""
-        for key in commands.keys():
+        for command in commands:
             words += f"""<dict>
         <key>EngineFlags</key>
         <integer>17</integer>
@@ -41,9 +41,9 @@ def main(argv):
         <key>Source</key>
         <string>User</string>
         <key>Spoken</key>
-        <string>{key}</string>
+        <string>{command}</string>
         <key>Written</key>
-        <string>{key}</string>
+        <string>{command}</string>
       </dict>"""
 
         with open(output_file, "w") as w:

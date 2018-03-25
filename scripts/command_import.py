@@ -44,7 +44,7 @@ def main(argv):
             c.execute("DELETE FROM ZCOMMAND;")
             c.execute("COMMIT TRANSACTION;")
 
-            for key in commands.keys():
+            for command in commands:
                 c.execute("SELECT Z_PK FROM ZTRIGGER ORDER BY Z_PK DESC LIMIT 1")
                 pk = c.fetchone()
                 if pk is not None:
@@ -57,8 +57,8 @@ def main(argv):
                 last_command += 1
 
                 c.execute("BEGIN TRANSACTION;")
-                c.execute(f"INSERT INTO ZTRIGGER (Z_ENT, Z_OPT, ZISUSER, ZCOMMAND, ZCURRENTCOMMAND, ZDESC, ZSPOKENLANGUAGE, ZSTRING) VALUES (4, 1, 1, {id}, {id}, 'mu', 'en_AU','{key}');")
-                c.execute(f"INSERT INTO ZACTION (Z_ENT, Z_OPT, ZISUSER, ZCOMMAND, ZCURRENTCOMMAND, ZOSLANGUAGE, ZTEXT) VALUES (1, 1, 1, {id}, {id}, 'en_US', 'echo -e \"{key}\" | nc -U /tmp/mu.sock');")
+                c.execute(f"INSERT INTO ZTRIGGER (Z_ENT, Z_OPT, ZISUSER, ZCOMMAND, ZCURRENTCOMMAND, ZDESC, ZSPOKENLANGUAGE, ZSTRING) VALUES (4, 1, 1, {id}, {id}, 'mu', 'en_AU','{command}');")
+                c.execute(f"INSERT INTO ZACTION (Z_ENT, Z_OPT, ZISUSER, ZCOMMAND, ZCURRENTCOMMAND, ZOSLANGUAGE, ZTEXT) VALUES (1, 1, 1, {id}, {id}, 'en_US', 'echo -e \"{command}\" | nc -U /tmp/mu.sock');")
                 c.execute(f"INSERT INTO ZCOMMAND(Z_ENT, Z_OPT, ZACTIVE, ZAPPVERSION, ZCOMMANDID, ZDISPLAY, ZENGINEID, ZISCOMMAND, ZISCORRECTION, ZISDICTATION, ZISSLEEP, ZISSPELLING, ZVERSION, ZCURRENTACTION, ZCURRENTTRIGGER, ZLOCATION, \
                   ZAPPBUNDLE, ZOSLANGUAGE, ZSPOKENLANGUAGE, ZTYPE, ZVENDOR) VALUES (2, 4, 1, 0, {command_id}, \
                   1, -1, 1, 0, 0, 0, 1, 1, {id}, {id}, NULL, NULL, 'en_US', 'en_AU', 'ShellScript', '{username}');")
@@ -71,7 +71,7 @@ def main(argv):
                     f"UPDATE Z_PRIMARYKEY SET Z_MAX = {id} WHERE Z_NAME = 'command'")
                 c.execute("COMMIT TRANSACTION;")
 
-            for key in commands.keys():
+            for command in commands:
                 c.execute("SELECT Z_PK FROM ZTRIGGER ORDER BY Z_PK DESC LIMIT 1")
                 pk = c.fetchone()
                 if pk is not None:
@@ -84,8 +84,8 @@ def main(argv):
                 last_command += 1
 
                 c.execute("BEGIN TRANSACTION;")
-                c.execute(f"INSERT INTO ZTRIGGER (Z_ENT, Z_OPT, ZISUSER, ZCOMMAND, ZCURRENTCOMMAND, ZDESC, ZSPOKENLANGUAGE, ZSTRING) VALUES (4, 1, 1, {id}, {id}, 'mu', 'en_AU','{key} /!Text!/');")
-                c.execute(f"INSERT INTO ZACTION (Z_ENT, Z_OPT, ZISUSER, ZCOMMAND, ZCURRENTCOMMAND, ZOSLANGUAGE, ZTEXT) VALUES (1, 1, 1, {id}, {id}, 'en_US', 'echo -e \"{key} ${{varText}}\" | nc -U /tmp/mu.sock');")
+                c.execute(f"INSERT INTO ZTRIGGER (Z_ENT, Z_OPT, ZISUSER, ZCOMMAND, ZCURRENTCOMMAND, ZDESC, ZSPOKENLANGUAGE, ZSTRING) VALUES (4, 1, 1, {id}, {id}, 'mu', 'en_AU','{command} /!Text!/');")
+                c.execute(f"INSERT INTO ZACTION (Z_ENT, Z_OPT, ZISUSER, ZCOMMAND, ZCURRENTCOMMAND, ZOSLANGUAGE, ZTEXT) VALUES (1, 1, 1, {id}, {id}, 'en_US', 'echo -e \"{command} ${{varText}}\" | nc -U /tmp/mu.sock');")
                 c.execute(f"INSERT INTO ZCOMMAND(Z_ENT, Z_OPT, ZACTIVE, ZAPPVERSION, ZCOMMANDID, ZDISPLAY, ZENGINEID, ZISCOMMAND, ZISCORRECTION, ZISDICTATION, ZISSLEEP, ZISSPELLING, ZVERSION, ZCURRENTACTION, ZCURRENTTRIGGER, ZLOCATION, \
                   ZAPPBUNDLE, ZOSLANGUAGE, ZSPOKENLANGUAGE, ZTYPE, ZVENDOR) VALUES (2, 4, 1, 0, {command_id}, \
                   1, -1, 1, 0, 0, 0, 1, 1, {id}, {id}, NULL, NULL, 'en_US', 'en_AU', 'ShellScript', '{username}');")

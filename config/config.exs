@@ -28,3 +28,12 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+
+config :mu,
+  command_modules: [
+    %{name: "Terminal", use: true},
+    %{name: "Format", use: true},
+    %{name: "Symbols", use: true},
+    %{name: "Vim", use: true},
+    %{name: "Literal", use: true}
+  ]

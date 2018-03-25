@@ -7,9 +7,7 @@ defmodule Mu.Commands.Terminal do
   This parser module contains functionality specific to the terminal.
   """
 
-  @commands %{
-    
-  }
+  @commands %{}
 
   def commands() do
     @commands

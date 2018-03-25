@@ -47,7 +47,8 @@ defmodule Mu.Core.Parser do
 
   def handle_word(curr, tail, context, commands) do
     command = get_command(curr)
-    IO.inspect command
+    IO.inspect(command)
+
     if command do
       commands =
         case context[:grammar] do

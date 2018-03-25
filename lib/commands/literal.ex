@@ -20,7 +20,9 @@ defmodule Mu.Commands.Literal do
     @commands
   end
 
-  def literal(tail) do
-    Input.string(tail)
+  def literal(text \\ nil) do
+    if text do
+      Input.string(text)
+    end
   end
 end

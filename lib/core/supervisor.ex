@@ -9,7 +9,8 @@ defmodule Mu.Core.Supervisor do
 
   def init(_) do
     children = [
-      {Mu.Core.ParserRegistry, name: Mu.Core.ParserRegistry},
+      # {Mu.Core.ParserRegistry, name: Mu.Core.ParserRegistry},
+      {Mu.Core.ParserRegistry, []},
       {Task.Supervisor, name: Mu.Core.Monitor.TaskSupervisor},
       {Mu.Core.Monitor, name: Mu.Core.Monitor}
     ]

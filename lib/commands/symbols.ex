@@ -14,7 +14,7 @@ defmodule Mu.Commands.Symbols do
       :function => :space,
       :grammar => :single
     },
-    "hang" => %{
+    "háng" => %{
       :description => "line break",
       :module => __MODULE__,
       :function => :line_break,
