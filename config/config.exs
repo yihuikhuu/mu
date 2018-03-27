@@ -35,5 +35,6 @@ config :mu,
     %{name: "Format", use: true},
     %{name: "Symbols", use: true},
     %{name: "Motion", use: true},
-    %{name: "Literal", use: true}
+    %{name: "Literal", use: true},
+    %{name: "Snippets", use: true}
   ]

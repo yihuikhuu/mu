@@ -26,7 +26,7 @@ defmodule Mu.Commands.Format do
       :function => :camel_case,
       :grammar => :text
     },
-    "dashi" => %{
+    "daluoshi" => %{
       :description => "Write text in pascal case",
       :module => __MODULE__,
       :function => :pascal_case,

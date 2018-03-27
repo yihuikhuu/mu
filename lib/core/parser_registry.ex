@@ -12,19 +12,25 @@ defmodule Mu.Core.ParserRegistry do
   end
 
   def output_vocabulary(commands) do
+    command_file_path = Application.app_dir(:mu) <> "/priv/commands.json"
     vocabulary_file_path = Application.app_dir(:mu) <> "/priv/vocabulary.json"
 
-    if not File.exists?(vocabulary_file_path) do
-      command_names =
-        Enum.reduce(commands, [], fn {k, v}, acc ->
-          acc ++ [k]
-        end)
+    command_names =
+      Enum.reduce(commands, [], fn {k, v}, acc ->
+        acc ++ [k]
+      end)
 
-      File.write(
-        vocabulary_file_path,
-        Poison.Encoder.encode(command_names, pretty: true)
-      )
-    end
+    File.write(
+      command_file_path,
+      Poison.Encoder.encode(command_names, pretty: true)
+    )
+
+    vocabulary = command_names ++ Mu.Commands.ExtraVocab.vocabulary()
+
+    File.write(
+      vocabulary_file_path,
+      Poison.Encoder.encode(vocabulary, pretty: true)
+    )
   end
 
   def load_commands do

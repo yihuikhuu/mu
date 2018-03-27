@@ -51,43 +51,55 @@ defmodule Mu.Commands.Motion do
       :description => "Move to start of line",
       :module => __MODULE__,
       :function => :start_line,
-      :grammar => :single
+      :grammar => :action
     },
     "wei" => %{
       :description => "Move to end of line",
       :module => __MODULE__,
       :function => :end_line,
-      :grammar => :single
+      :grammar => :action
     },
     "chashang" => %{
       :description => "Insert above current line",
       :module => __MODULE__,
       :function => :insert_above,
-      :grammar => :single
+      :grammar => :action
     },
     "chaxia" => %{
       :description => "Insert below current line",
       :module => __MODULE__,
       :function => :insert_below,
-      :grammar => :single
+      :grammar => :action
     },
     "xuan" => %{
       :description => "Select current character",
       :module => __MODULE__,
       :function => :select,
-      :grammar => :single
+      :grammar => :action
     },
     "xuanzi" => %{
       :description => "Select current word",
       :module => __MODULE__,
       :function => :select_word,
-      :grammar => :single
+      :grammar => :action
     },
     "xuanhang" => %{
       :description => "Select current line",
       :module => __MODULE__,
       :function => :select_line,
-      :grammar => :single
+      :grammar => :action
+    },
+    "zheng" => %{
+      :description => "Format current line",
+      :module => __MODULE__,
+      :function => :format_line,
+      :grammar => :action
+    },
+    "quanzheng" => %{
+      :description => "Format document",
+      :module => __MODULE__,
+      :function => :format_document,
+      :grammar => :action
     }
   }
 
@@ -118,7 +130,7 @@ defmodule Mu.Commands.Motion do
       |> Enum.reduce([:escape], fn x, acc ->
         acc ++ [x |> Integer.to_string() |> String.to_atom()]
       end)
-    
+
     Input.key_list(keys ++ [:G])
   end
 
@@ -141,9 +153,7 @@ defmodule Mu.Commands.Motion do
   end
 
   def insert_above do
-    # Input.key_list([:escape, :O])
-    Input.key(:escape)
-    Input.string("O")
+    Input.key_list([:escape, :O])
   end
 
   def insert_below do
@@ -160,5 +170,13 @@ defmodule Mu.Commands.Motion do
 
   def select_line do
     Input.key_list([:escape, :V])
+  end
+
+  def format_line do
+    Input.key_list([:escape, :=, :=])
+  end
+
+  def format_document do
+    Input.key_list([:escape, :g, :g, :V, :G, :=, :"`", :"`"])
   end
 end

@@ -12,43 +12,43 @@ defmodule Mu.Commands.Symbols do
       :description => "space",
       :module => __MODULE__,
       :function => :space,
-      :grammar => :single
+      :grammar => :action
     },
     "duanhang" => %{
       :description => "line break",
       :module => __MODULE__,
       :function => :line_break,
-      :grammar => :single
+      :grammar => :action
     },
     "biao" => %{
       :description => "tab",
       :module => __MODULE__,
       :function => :tab,
-      :grammar => :single
+      :grammar => :action
     },
     "yuangua" => %{
       :description => "brackets",
       :module => __MODULE__,
       :function => :brackets,
-      :grammar => :single
+      :grammar => :action
     },
     "huagua" => %{
       :description => "braces",
       :module => __MODULE__,
       :function => :braces,
-      :grammar => :single
+      :grammar => :action
     },
     "fanggua" => %{
       :description => "square brackets",
       :module => __MODULE__,
       :function => :square_brackets,
-      :grammar => :single
+      :grammar => :action
     },
     "dian" => %{
       :description => "dot",
       :module => __MODULE__,
       :function => :dot,
-      :grammar => :single
+      :grammar => :action
     }
   }
 
@@ -62,6 +62,10 @@ defmodule Mu.Commands.Symbols do
 
   def line_break do
     Input.key_list([:escape, :a, :enter])
+  end
+
+  def tab do
+    Input.key(:tab)
   end
 
   def brackets do

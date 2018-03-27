@@ -8,6 +8,7 @@ defmodule Mu.Core.Parser do
   """
 
   def parse(text) do
+    Logger.info text
     String.trim(text, "\n")
     |> String.downcase()
     |> String.replace("-", " ")
@@ -38,73 +39,77 @@ defmodule Mu.Core.Parser do
   end
 
   def handle_word(curr, tail, context, commands) do
-    command = get_command(curr)
-    IO.inspect(command)
-
-    if command do
-      commands = process_context(context, commands)
-
-      case command[:grammar] do
-        :unconstrained ->
-          process(
-            nil,
-            %{},
-            commands ++
-              [
-                %{
-                  :grammar => :unconstrained,
-                  :module => command.module,
-                  :function => command.function,
-                  :arguments => tail
-                }
-              ]
-          )
-
-        :single ->
-          process(
-            tail,
-            %{},
-            commands ++
-              [
-                %{
-                  :grammar => :single,
-                  :module => command.module,
-                  :function => command.function,
-                  :arguments => nil
-                }
-              ]
-          )
-
-        grammar ->
-          process(
-            tail,
-            %{
-              :grammar => grammar,
-              :module => command.module,
-              :function => command.function,
-              :arguments => nil
-            },
-            commands
-          )
-      end
+    if context[:grammar] == :single do
+      process(tail, %{}, commands ++ [Map.put(context, :arguments, curr)])
     else
-      case context[:grammar] do
-        nil ->
-          # Ignore word if not in any command context
-          process(tail, %{}, commands)
+      command = get_command(curr)
+      IO.inspect(command)
 
-        _ ->
-          case context[:arguments] do
-            nil ->
-              process(tail, Map.put(context, :arguments, curr), commands)
+      if command do
+        commands = process_context(context, commands)
 
-            arguments ->
-              process(
-                tail,
-                %{context | :arguments => arguments <> " " <> curr},
-                commands
-              )
-          end
+        case command[:grammar] do
+          :unconstrained ->
+            process(
+              nil,
+              %{},
+              commands ++
+                [
+                  %{
+                    :grammar => :unconstrained,
+                    :module => command.module,
+                    :function => command.function,
+                    :arguments => tail
+                  }
+                ]
+            )
+
+          :action ->
+            process(
+              tail,
+              %{},
+              commands ++
+                [
+                  %{
+                    :grammar => :single,
+                    :module => command.module,
+                    :function => command.function,
+                    :arguments => nil
+                  }
+                ]
+            )
+
+          grammar ->
+            process(
+              tail,
+              %{
+                :grammar => grammar,
+                :module => command.module,
+                :function => command.function,
+                :arguments => nil
+              },
+              commands
+            )
+        end
+      else
+        case context[:grammar] do
+          nil ->
+            # Ignore word if not in any command context
+            process(tail, %{}, commands)
+
+          _ ->
+            case context[:arguments] do
+              nil ->
+                process(tail, Map.put(context, :arguments, curr), commands)
+
+              arguments ->
+                process(
+                  tail,
+                  %{context | :arguments => arguments <> " " <> curr},
+                  commands
+                )
+            end
+        end
       end
     end
   end
