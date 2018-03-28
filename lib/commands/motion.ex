@@ -130,6 +130,42 @@ defmodule Mu.Commands.Motion do
       :module => __MODULE__,
       :function => :delete_line,
       :grammar => :numeric
+    },
+    "huan" => %{
+      :description => "Change",
+      :module => __MODULE__,
+      :function => :change,
+      :grammar => :action
+    },
+    "huanzi" => %{
+      :description => "Change word",
+      :module => __MODULE__,
+      :function => :change_word,
+      :grammar => :numeric
+    },
+    "huanhang" => %{
+      :description => "Change line",
+      :module => __MODULE__,
+      :function => :change_line,
+      :grammar => :numeric
+    },
+    "jin" => %{
+      :description => "Insert mode",
+      :module => __MODULE__,
+      :function => :insert_mode,
+      :grammar => :action
+    },
+    "jia" => %{
+      :description => "Append",
+      :module => __MODULE__,
+      :function => :append,
+      :grammar => :action
+    },
+    "che" => %{
+      :description => "Escape",
+      :module => __MODULE__,
+      :function => :exit,
+      :grammar => :action
     }
   }
 
@@ -262,5 +298,43 @@ defmodule Mu.Commands.Motion do
 
     Input.key_list(keys)
     Input.key_list([:d, :d])
+  end
+
+  def change do
+    Input.key_control(:r)
+  end
+
+  def change_word(times \\ 1) do
+    keys =
+      Integer.digits(times)
+      |> Enum.reduce([:escape], fn x, acc ->
+        acc ++ [x |> Integer.to_string() |> String.to_atom()]
+      end)
+
+    Input.key_list(keys)
+    Input.key_list([:c, :i, :w])
+  end
+
+  def change_line(times \\ 1) do
+    keys =
+      Integer.digits(times)
+      |> Enum.reduce([:escape], fn x, acc ->
+        acc ++ [x |> Integer.to_string() |> String.to_atom()]
+      end)
+
+    Input.key_list(keys)
+    Input.key_list([:c, :c])
+  end
+
+  def insert_mode do
+    Input.key(:i)
+  end
+
+  def append do
+    Input.key(:a)
+  end
+
+  def exit do
+    Input.key(:escape)
   end
 end

@@ -140,62 +140,62 @@ defmodule Mu.Commands.Symbols do
   end
 
   def brackets do
-    sequence([:"(", :")"])
+    Input.key_list([:"(", :")"])
   end
 
   def braces do
-    sequence([:"{", :"}"])
+    Input.key_list([:"{", :"}"])
   end
 
   def square_brackets do
-    sequence([:"[", :"]"])
+    Input.key_list([:"[", :"]"])
   end
 
   def dot do
-    sequence([:.])
+    Input.key_list([:.])
   end
 
   def comma do
-    sequence([:","])
+    Input.key_list([:","])
   end
 
   def equal do
-    sequence([:=])
+    Input.key_list([:=])
   end
 
   def double_equal do
-    sequence([:=, :=])
+    Input.key_list([:=, :=])
   end
 
   def triple_equal do
-    sequence([:=, :=, :=])
+    Input.key_list([:=, :=, :=])
   end
 
   def less_than_equal do
-    sequence([:<, :=])
+    Input.key_list([:<, :=])
   end
 
   def greater_than_equal do
-    sequence([:>, :=])
+    Input.key_list([:>, :=])
   end
 
   def less_than do
-    sequence([:<])
+    Input.key_list([:<])
   end
 
   def greater_than do
-    sequence([:>])
+    Input.key_list([:>])
   end
 
   def colon do
-    sequence([:":"])
+    Input.key_list([:":"])
   end
 
   def semicolon do
-    sequence([:";"])
+    Input.key_list([:";"])
   end
 
   def question_mark do
-    sequence([:"?"])
+    Input.key_list([:"?"])
   end
 end
