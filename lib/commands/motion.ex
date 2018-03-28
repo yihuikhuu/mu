@@ -100,6 +100,18 @@ defmodule Mu.Commands.Motion do
       :module => __MODULE__,
       :function => :format_document,
       :grammar => :action
+    },
+    "fuyuan" => %{
+      :description => "Undo",
+      :module => __MODULE__,
+      :function => :undo,
+      :grammar => :numeric
+    },
+    "chongzuo" => %{
+      :description => "Redo",
+      :module => __MODULE__,
+      :function => :redo,
+      :grammar => :numeric
     }
   }
 
@@ -178,5 +190,26 @@ defmodule Mu.Commands.Motion do
 
   def format_document do
     Input.key_list([:escape, :g, :g, :V, :G, :=, :"`", :"`"])
+  end
+
+  def undo(times \\ 1) do
+    keys =
+      Integer.digits(times)
+      |> Enum.reduce([:escape], fn x, acc ->
+        acc ++ [x |> Integer.to_string() |> String.to_atom()]
+      end)
+
+    Input.key_list(keys ++ [:u])
+  end
+
+  def redo(times \\ 1) do
+    keys =
+      Integer.digits(times)
+      |> Enum.reduce([:escape], fn x, acc ->
+        acc ++ [x |> Integer.to_string() |> String.to_atom()]
+      end)
+
+    Input.key_list(keys)
+    Input.key_control(:r)
   end
 end

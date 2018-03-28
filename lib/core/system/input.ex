@@ -409,6 +409,17 @@ defmodule Mu.Core.System.Input do
     ])
   end
 
+  def key_control(key, times \\ 1) do
+    System.cmd("osascript", [
+      "-e",
+      ~s(tell application "System Events"
+          repeat #{times} times
+           key code #{@key_codes[key]} using control down
+          end repeat
+      end tell)
+    ])
+  end
+
   def key_list(keys) do
     commands =
       Enum.reduce(keys, "", fn x, acc ->

@@ -22,7 +22,9 @@ defmodule Mu.Commands.Literal do
 
   def literal(text \\ nil) do
     if text do
+      Input.key_list([:escape, :a])
       Input.string(text)
+      Input.key(:escape)
     end
   end
 end

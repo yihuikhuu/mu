@@ -8,7 +8,8 @@ defmodule Mu.Core.Parser do
   """
 
   def parse(text) do
-    Logger.info text
+    Logger.info(text)
+
     String.trim(text, "\n")
     |> String.downcase()
     |> String.replace("-", " ")

@@ -134,19 +134,68 @@ defmodule Mu.Commands.Symbols do
     Input.key(:tab)
   end
 
+  # Helper function for handling standard escape/input/move/exit procedure
+  def sequence(keys) do
+    Input.key_list([:escape, :a] ++ keys ++ [:left, :escape])
+  end
+
   def brackets do
-    Input.key_list([:escape, :a, :"(", :")", :left])
+    sequence([:"(", :")"])
   end
 
   def braces do
-    Input.key_list([:escape, :a, :"{", :"}", :left])
+    sequence([:"{", :"}"])
   end
 
   def square_brackets do
-    Input.key_list([:escape, :a, :"[", :"]", :left])
+    sequence([:"[", :"]"])
   end
 
   def dot do
-    Input.key_list([:escape, :a, :., :left])
+    sequence([:.])
+  end
+
+  def comma do
+    sequence([:","])
+  end
+
+  def equal do
+    sequence([:=])
+  end
+
+  def double_equal do
+    sequence([:=, :=])
+  end
+
+  def triple_equal do
+    sequence([:=, :=, :=])
+  end
+
+  def less_than_equal do
+    sequence([:<, :=])
+  end
+
+  def greater_than_equal do
+    sequence([:>, :=])
+  end
+
+  def less_than do
+    sequence([:<])
+  end
+
+  def greater_than do
+    sequence([:>])
+  end
+
+  def colon do
+    sequence([:":"])
+  end
+
+  def semicolon do
+    sequence([:";"])
+  end
+
+  def question_mark do
+    sequence([:"?"])
   end
 end
