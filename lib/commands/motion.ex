@@ -207,7 +207,7 @@ defmodule Mu.Commands.Motion do
 
   def back_word(times \\ 1) do
     Input.key(:escape)
-    Input.key("b", times)
+    Input.key(:b, times)
   end
 
   def start_line do
