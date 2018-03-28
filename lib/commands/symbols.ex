@@ -140,15 +140,15 @@ defmodule Mu.Commands.Symbols do
   end
 
   def brackets do
-    Input.key_list([:"(", :")"])
+    Input.key_list([:"(", :")", :left])
   end
 
   def braces do
-    Input.key_list([:"{", :"}"])
+    Input.key_list([:"{", :"}", :left])
   end
 
   def square_brackets do
-    Input.key_list([:"[", :"]"])
+    Input.key_list([:"[", :"]", :left])
   end
 
   def dot do
