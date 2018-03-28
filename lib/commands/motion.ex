@@ -112,6 +112,24 @@ defmodule Mu.Commands.Motion do
       :module => __MODULE__,
       :function => :redo,
       :grammar => :numeric
+    },
+    "shan" => %{
+      :description => "Delete",
+      :module => __MODULE__,
+      :function => :delete,
+      :grammar => :numeric
+    },
+    "shanzi" => %{
+      :description => "Delete word",
+      :module => __MODULE__,
+      :function => :delete_word,
+      :grammar => :numeric
+    },
+    "shanhang" => %{
+      :description => "Delete line",
+      :module => __MODULE__,
+      :function => :delete_line,
+      :grammar => :numeric
     }
   }
 
@@ -211,5 +229,38 @@ defmodule Mu.Commands.Motion do
 
     Input.key_list(keys)
     Input.key_control(:r)
+  end
+
+  def delete(times \\ 1) do
+    keys =
+      Integer.digits(times)
+      |> Enum.reduce([:escape], fn x, acc ->
+        acc ++ [x |> Integer.to_string() |> String.to_atom()]
+      end)
+
+    Input.key_list(keys)
+    Input.key_control(:x)
+  end
+
+  def delete_word(times \\ 1) do
+    keys =
+      Integer.digits(times)
+      |> Enum.reduce([:escape], fn x, acc ->
+        acc ++ [x |> Integer.to_string() |> String.to_atom()]
+      end)
+
+    Input.key_list(keys)
+    Input.key_list([:d, :i, :w])
+  end
+
+  def delete_line(times \\ 1) do
+    keys =
+      Integer.digits(times)
+      |> Enum.reduce([:escape], fn x, acc ->
+        acc ++ [x |> Integer.to_string() |> String.to_atom()]
+      end)
+
+    Input.key_list(keys)
+    Input.key_list([:d, :d])
   end
 end
