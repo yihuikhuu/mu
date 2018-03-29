@@ -56,31 +56,31 @@ defmodule Mu.Commands.Symbols do
       :function => :comma,
       :grammar => :action
     },
-    "dengyu" => %{
+    "shi" => %{
       :description => "equal",
       :module => __MODULE__,
       :function => :equal,
       :grammar => :action
     },
-    "dequal" => %{
+    "dengyu" => %{
       :description => "double equal",
       :module => __MODULE__,
       :function => :double_equal,
       :grammar => :action
     },
-    "trequal" => %{
+    "yandengyu" => %{
       :description => "triple equal",
       :module => __MODULE__,
       :function => :triple_equal,
       :grammar => :action
     },
-    "lequal" => %{
+    "xiaoping" => %{
       :description => "less than or equal",
       :module => __MODULE__,
       :function => :less_than_equal,
       :grammar => :action
     },
-    "grequal" => %{
+    "daping" => %{
       :description => "greater than or equal",
       :module => __MODULE__,
       :function => :greater_than_equal,
@@ -160,31 +160,31 @@ defmodule Mu.Commands.Symbols do
   end
 
   def equal do
-    Input.key_list([:=])
+    Input.key_list([:space, :=, :space])
   end
 
   def double_equal do
-    Input.key_list([:=, :=])
+    Input.key_list([:space, :=, :=, :space])
   end
 
   def triple_equal do
-    Input.key_list([:=, :=, :=])
+    Input.key_list([:space, :=, :=, :=, :space])
   end
 
   def less_than_equal do
-    Input.key_list([:<, :=])
+    Input.key_list([:space, :<, :=, :space])
   end
 
   def greater_than_equal do
-    Input.key_list([:>, :=])
+    Input.key_list([:space, :>, :=, :space])
   end
 
   def less_than do
-    Input.key_list([:<])
+    Input.key_list([:space, :<, :space])
   end
 
   def greater_than do
-    Input.key_list([:>])
+    Input.key_list([:space, :>, :space])
   end
 
   def colon do
@@ -196,6 +196,6 @@ defmodule Mu.Commands.Symbols do
   end
 
   def question_mark do
-    Input.key_list([:"?"])
+    Input.key_list([:space, :"?", :space])
   end
 end

@@ -5,7 +5,7 @@ defmodule Mu.Core.ParserRegistry do
   @doc """
   Starts the registry.
   """
-  def start_link(opts) do
+  def start_link(_) do
     commands = load_commands()
     output_vocabulary(commands)
     GenServer.start_link(__MODULE__, commands, name: Mu.Core.ParserRegistry)
@@ -16,7 +16,7 @@ defmodule Mu.Core.ParserRegistry do
     vocabulary_file_path = Application.app_dir(:mu) <> "/priv/vocabulary.json"
 
     command_names =
-      Enum.reduce(commands, [], fn {k, v}, acc ->
+      Enum.reduce(commands, [], fn {k, _}, acc ->
         acc ++ [k]
       end)
 

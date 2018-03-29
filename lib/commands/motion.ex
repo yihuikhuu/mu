@@ -65,19 +65,19 @@ defmodule Mu.Commands.Motion do
       :function => :insert_above,
       :grammar => :action
     },
-    "chaxia" => %{
+    "chadi" => %{
       :description => "Insert below current line",
       :module => __MODULE__,
       :function => :insert_below,
       :grammar => :action
     },
-    "xuan" => %{
+    "xuanyi" => %{
       :description => "Select current character",
       :module => __MODULE__,
       :function => :select,
       :grammar => :action
     },
-    "xuanzi" => %{
+    "xuancheng" => %{
       :description => "Select current word",
       :module => __MODULE__,
       :function => :select_word,
@@ -113,13 +113,13 @@ defmodule Mu.Commands.Motion do
       :function => :redo,
       :grammar => :numeric
     },
-    "shan" => %{
+    "shanyi" => %{
       :description => "Delete",
       :module => __MODULE__,
       :function => :delete,
       :grammar => :numeric
     },
-    "shanzi" => %{
+    "shancheng" => %{
       :description => "Delete word",
       :module => __MODULE__,
       :function => :delete_word,
@@ -131,19 +131,19 @@ defmodule Mu.Commands.Motion do
       :function => :delete_line,
       :grammar => :numeric
     },
-    "huan" => %{
+    "gaiyi" => %{
       :description => "Change",
       :module => __MODULE__,
       :function => :change,
       :grammar => :action
     },
-    "huanzi" => %{
+    "gaicheng" => %{
       :description => "Change word",
       :module => __MODULE__,
       :function => :change_word,
       :grammar => :numeric
     },
-    "huanhang" => %{
+    "gaihang" => %{
       :description => "Change line",
       :module => __MODULE__,
       :function => :change_line,
@@ -161,7 +161,7 @@ defmodule Mu.Commands.Motion do
       :function => :append,
       :grammar => :action
     },
-    "che" => %{
+    "gui" => %{
       :description => "Escape",
       :module => __MODULE__,
       :function => :exit,
@@ -275,7 +275,7 @@ defmodule Mu.Commands.Motion do
       end)
 
     Input.key_list(keys)
-    Input.key_control(:x)
+    Input.key(:x)
   end
 
   def delete_word(times \\ 1) do

@@ -8,43 +8,43 @@ defmodule Mu.Commands.Format do
   """
 
   @commands %{
-    "sheshi" => %{
+    "shexing" => %{
       :description => "Write text in snake case",
       :module => __MODULE__,
       :function => :snake_case,
       :grammar => :text
     },
-    "changshi" => %{
+    "changxing" => %{
       :description => "Write text in constant case",
       :module => __MODULE__,
       :function => :constant_case,
       :grammar => :text
     },
-    "luoshi" => %{
+    "luoxing" => %{
       :description => "Write text in camel case",
       :module => __MODULE__,
       :function => :camel_case,
       :grammar => :text
     },
-    "daluoshi" => %{
+    "daxing" => %{
       :description => "Write text in pascal case",
       :module => __MODULE__,
       :function => :pascal_case,
       :grammar => :text
     },
-    "lianshi" => %{
+    "lianxing" => %{
       :description => "Write text in dash case",
       :module => __MODULE__,
       :function => :dash_case,
       :grammar => :text
     },
-    "dianshi" => %{
+    "dianxing" => %{
       :description => "Write text in dot case",
       :module => __MODULE__,
       :function => :dot_case,
       :grammar => :text
     },
-    "lushi" => %{
+    "tuxing" => %{
       :description => "Write text in path case",
       :module => __MODULE__,
       :function => :path_case,
@@ -98,7 +98,7 @@ defmodule Mu.Commands.Format do
     end
   end
 
-  def path_string(text \\ nil) do
+  def path_case(text \\ nil) do
     if text do
       Recase.to_path(text)
       |> Input.string()
