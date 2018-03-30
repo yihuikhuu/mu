@@ -14,7 +14,7 @@ defmodule Mu.Commands.Snippets do
       :function => :expand_snippet,
       :grammar => :single
     },
-    "xuankuo" => %{
+    "tiaokuo" => %{
       :description => "Expand a snippet on a visual selection",
       :module => __MODULE__,
       :function => :expand_visual_snippet,
