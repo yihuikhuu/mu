@@ -14,7 +14,7 @@ defmodule Mu.Commands.Symbols do
       :function => :space,
       :grammar => :action
     },
-    "duanhang" => %{
+    "duan" => %{
       :description => "line break",
       :module => __MODULE__,
       :function => :line_break,
@@ -26,19 +26,19 @@ defmodule Mu.Commands.Symbols do
       :function => :tab,
       :grammar => :action
     },
-    "yuangua" => %{
+    "yuanhao" => %{
       :description => "brackets",
       :module => __MODULE__,
       :function => :brackets,
       :grammar => :action
     },
-    "huagua" => %{
+    "huahao" => %{
       :description => "braces",
       :module => __MODULE__,
       :function => :braces,
       :grammar => :action
     },
-    "fanggua" => %{
+    "fanghao" => %{
       :description => "square brackets",
       :module => __MODULE__,
       :function => :square_brackets,
@@ -114,6 +114,18 @@ defmodule Mu.Commands.Symbols do
       :description => "question mark",
       :module => __MODULE__,
       :function => :question_mark,
+      :grammar => :action
+    },
+    "yin" => %{
+      :description => "quote",
+      :module => __MODULE__,
+      :function => :quote,
+      :grammar => :action
+    },
+    "shuangyin" => %{
+      :description => "double quote",
+      :module => __MODULE__,
+      :function => :double_quote,
       :grammar => :action
     }
   }
@@ -197,5 +209,13 @@ defmodule Mu.Commands.Symbols do
 
   def question_mark do
     Input.key_list([:space, :"?", :space])
+  end
+
+  def quote do
+    Input.key_list([:"'", :"'", :left])
+  end
+
+  def double_quote do
+    Input.key_list([:"\"", :"\"", :left])
   end
 end

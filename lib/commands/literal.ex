@@ -8,7 +8,7 @@ defmodule Mu.Commands.Literal do
   """
 
   @commands %{
-    "chun" => %{
+    "cun" => %{
       :description => "Keep following text",
       :module => __MODULE__,
       :function => :literal,

@@ -71,19 +71,19 @@ defmodule Mu.Commands.Motion do
       :function => :insert_below,
       :grammar => :action
     },
-    "xuanyi" => %{
+    "tiaoyi" => %{
       :description => "Select current character",
       :module => __MODULE__,
       :function => :select,
       :grammar => :action
     },
-    "xuancheng" => %{
+    "tiaocheng" => %{
       :description => "Select current word",
       :module => __MODULE__,
       :function => :select_word,
       :grammar => :action
     },
-    "xuanhang" => %{
+    "tiaohang" => %{
       :description => "Select current line",
       :module => __MODULE__,
       :function => :select_line,
