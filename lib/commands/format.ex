@@ -87,14 +87,18 @@ defmodule Mu.Commands.Format do
   def dash_case(text \\ nil) do
     if text do
       Recase.to_kebab(text)
-      |> Input.string()
+      |> String.split("", trim: true)
+      |> Enum.reduce([], fn(x, acc) -> acc ++ [String.to_existing_atom(x)] end)
+      |> Input.key_list()
     end
   end
 
   def dot_case(text \\ nil) do
     if text do
       Recase.to_dot(text)
-      |> Input.string()
+      |> String.split("", trim: true)
+      |> Enum.reduce([], fn(x, acc) -> acc ++ [String.to_existing_atom(x)] end)
+      |> Input.key_list()
     end
   end
 
