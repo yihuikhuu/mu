@@ -26,7 +26,7 @@ defmodule Mu.Commands.Format do
       :function => :camel_case,
       :grammar => :text
     },
-    "daxing" => %{
+    "gaoxing" => %{
       :description => "Write text in pascal case",
       :module => __MODULE__,
       :function => :pascal_case,
@@ -44,7 +44,7 @@ defmodule Mu.Commands.Format do
       :function => :dot_case,
       :grammar => :text
     },
-    "tuxing" => %{
+    "lujing" => %{
       :description => "Write text in path case",
       :module => __MODULE__,
       :function => :path_case,

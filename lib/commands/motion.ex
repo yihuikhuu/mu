@@ -166,6 +166,42 @@ defmodule Mu.Commands.Motion do
       :module => __MODULE__,
       :function => :exit,
       :grammar => :action
+    },
+    "fenheng" => %{
+      :description => "Split horizontal",
+      :module => __MODULE__,
+      :function => :split_horizontal,
+      :grammar => :action
+    },
+    "fenzhi" => %{
+      :description => "Split vertical",
+      :module => __MODULE__,
+      :function => :split_vertical,
+      :grammar => :action
+    },
+    "fenzuo" => %{
+      :description => "Switch split left",
+      :module => __MODULE__,
+      :function => :switch_left,
+      :grammar => :action
+    },
+    "fenyou" => %{
+      :description => "Switch split right",
+      :module => __MODULE__,
+      :function => :switch_right,
+      :grammar => :action
+    },
+    "fenshang" => %{
+      :description => "Switch split up",
+      :module => __MODULE__,
+      :function => :switch_up,
+      :grammar => :action
+    },
+    "fenxia" => %{
+      :description => "Switch split xia",
+      :module => __MODULE__,
+      :function => :switch_down,
+      :grammar => :action
     }
   }
 
@@ -337,4 +373,37 @@ defmodule Mu.Commands.Motion do
   def exit do
     Input.key(:escape)
   end
+
+  def split_horizontal do
+    Input.key_list([:escape, :":", :s, :p, :enter])
+  end
+
+  def split_vertical do
+    Input.key_list([:escape, :":", :v, :s, :enter])
+  end
+
+  def switch_left do
+    Input.key(:escape)
+    Input.key_control(:w)
+    Input.key(:left)
+  end
+
+  def switch_right do
+    Input.key(:escape)
+    Input.key_control(:w)
+    Input.key(:right)
+  end
+
+  def switch_up do
+    Input.key(:escape)
+    Input.key_control(:w)
+    Input.key(:up)
+  end
+
+  def switch_down do
+    Input.key(:escape)
+    Input.key_control(:w)
+    Input.key(:down)
+  end
+
 end

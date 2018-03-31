@@ -20,7 +20,7 @@ defmodule Mu.Core.System.Input do
     # 0x05
     :g => 5,
     # 0x04
-    :h => 6,
+    :h => 4,
     # 0x22
     :i => 34,
     # 0x26

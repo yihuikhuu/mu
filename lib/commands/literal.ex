@@ -8,7 +8,7 @@ defmodule Mu.Commands.Literal do
   """
 
   @commands %{
-    "cun" => %{
+    "liu" => %{
       :description => "Keep following text",
       :module => __MODULE__,
       :function => :literal,
@@ -24,7 +24,6 @@ defmodule Mu.Commands.Literal do
     if text do
       Input.key_list([:escape, :a])
       Input.string(text)
-      Input.key(:escape)
     end
   end
 end

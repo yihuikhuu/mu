@@ -56,19 +56,19 @@ defmodule Mu.Commands.Symbols do
       :function => :comma,
       :grammar => :action
     },
-    "shi" => %{
+    "dengyu" => %{
       :description => "equal",
       :module => __MODULE__,
       :function => :equal,
       :grammar => :action
     },
-    "dengyu" => %{
+    "dengtong" => %{
       :description => "double equal",
       :module => __MODULE__,
       :function => :double_equal,
       :grammar => :action
     },
-    "yandengyu" => %{
+    "yandengtong" => %{
       :description => "triple equal",
       :module => __MODULE__,
       :function => :triple_equal,
