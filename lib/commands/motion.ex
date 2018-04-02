@@ -425,5 +425,4 @@ defmodule Mu.Commands.Motion do
     Input.key_control(:w)
     Input.key(:down)
   end
-
 end

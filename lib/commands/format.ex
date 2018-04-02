@@ -88,7 +88,7 @@ defmodule Mu.Commands.Format do
     if text do
       Recase.to_kebab(text)
       |> String.split("", trim: true)
-      |> Enum.reduce([], fn(x, acc) -> acc ++ [String.to_existing_atom(x)] end)
+      |> Enum.reduce([], fn x, acc -> acc ++ [String.to_existing_atom(x)] end)
       |> Input.key_list()
     end
   end
@@ -97,7 +97,7 @@ defmodule Mu.Commands.Format do
     if text do
       Recase.to_dot(text)
       |> String.split("", trim: true)
-      |> Enum.reduce([], fn(x, acc) -> acc ++ [String.to_existing_atom(x)] end)
+      |> Enum.reduce([], fn x, acc -> acc ++ [String.to_existing_atom(x)] end)
       |> Input.key_list()
     end
   end
