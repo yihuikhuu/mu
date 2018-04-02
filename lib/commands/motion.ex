@@ -7,211 +7,176 @@ defmodule Mu.Commands.Motion do
   @commands %{
     "meft" => %{
       :description => "Move left by <number>",
-      :module => __MODULE__,
       :function => :move_left,
       :grammar => :numeric
     },
     "mit" => %{
       :description => "Move right by <number>",
-      :module => __MODULE__,
       :function => :move_right,
       :grammar => :numeric
     },
     "mup" => %{
       :description => "Move up by <number>",
-      :module => __MODULE__,
       :function => :move_up,
       :grammar => :numeric
     },
     "moun" => %{
       :description => "Move down by <number>",
-      :module => __MODULE__,
       :function => :move_down,
       :grammar => :numeric
     },
     "iku" => %{
       :description => "Move to <number>",
-      :module => __MODULE__,
       :function => :move_to,
       :grammar => :numeric
     },
     "fi" => %{
       :description => "Move forward a word",
-      :module => __MODULE__,
       :function => :forward_word,
       :grammar => :numeric
     },
     "bi" => %{
       :description => "Move back a word",
-      :module => __MODULE__,
       :function => :back_word,
       :grammar => :numeric
     },
     "stine" => %{
       :description => "Move to start of line",
-      :module => __MODULE__,
       :function => :start_line,
       :grammar => :action
     },
     "eldin" => %{
       :description => "Move to end of line",
-      :module => __MODULE__,
       :function => :end_line,
       :grammar => :action
     },
     "kai" => %{
       :description => "Top of document",
-      :module => __MODULE__,
       :function => :top,
       :grammar => :action
     },
     "jin" => %{
       :description => "Bottom of document",
-      :module => __MODULE__,
       :function => :bottom,
       :grammar => :action
     },
     "abi" => %{
       :description => "Insert above current line",
-      :module => __MODULE__,
       :function => :insert_above,
       :grammar => :action
     },
     "beli" => %{
       :description => "Insert below current line",
-      :module => __MODULE__,
       :function => :insert_below,
       :grammar => :action
     },
     "seli" => %{
       :description => "Select current character",
-      :module => __MODULE__,
       :function => :select,
       :grammar => :action
     },
     "selord" => %{
       :description => "Select current word",
-      :module => __MODULE__,
       :function => :select_word,
       :grammar => :action
     },
     "seline" => %{
       :description => "Select current line",
-      :module => __MODULE__,
       :function => :select_line,
       :grammar => :action
     },
     "forine" => %{
       :description => "Format current line",
-      :module => __MODULE__,
       :function => :format_line,
       :grammar => :action
     },
     "forall" => %{
       :description => "Format document",
-      :module => __MODULE__,
       :function => :format_document,
       :grammar => :action
     },
     "desi" => %{
       :description => "Undo",
-      :module => __MODULE__,
       :function => :undo,
       :grammar => :numeric
     },
     "remi" => %{
       :description => "Redo",
-      :module => __MODULE__,
       :function => :redo,
       :grammar => :numeric
     },
     "dili" => %{
       :description => "Delete",
-      :module => __MODULE__,
       :function => :delete,
       :grammar => :numeric
     },
     "diword" => %{
       :description => "Delete word",
-      :module => __MODULE__,
       :function => :delete_word,
       :grammar => :numeric
     },
     "diline" => %{
       :description => "Delete line",
-      :module => __MODULE__,
       :function => :delete_line,
       :grammar => :numeric
     },
     "cheli" => %{
       :description => "Change",
-      :module => __MODULE__,
       :function => :change,
       :grammar => :action
     },
     "cheword" => %{
       :description => "Change word",
-      :module => __MODULE__,
       :function => :change_word,
       :grammar => :numeric
     },
     "cheline" => %{
       :description => "Change line",
-      :module => __MODULE__,
       :function => :change_line,
       :grammar => :numeric
     },
     "ili" => %{
       :description => "Insert mode",
-      :module => __MODULE__,
       :function => :insert_mode,
       :grammar => :action
     },
     "ali" => %{
       :description => "Append",
-      :module => __MODULE__,
       :function => :append,
       :grammar => :action
     },
     "gui" => %{
       :description => "Escape",
-      :module => __MODULE__,
       :function => :exit,
       :grammar => :action
     },
     "hori" => %{
       :description => "Split horizontal",
-      :module => __MODULE__,
       :function => :split_horizontal,
       :grammar => :action
     },
     "verti" => %{
       :description => "Split vertical",
-      :module => __MODULE__,
       :function => :split_vertical,
       :grammar => :action
     },
     "veft" => %{
       :description => "Switch split left",
-      :module => __MODULE__,
       :function => :switch_left,
       :grammar => :action
     },
     "vit" => %{
       :description => "Switch split right",
-      :module => __MODULE__,
       :function => :switch_right,
       :grammar => :action
     },
     "vup" => %{
       :description => "Switch split up",
-      :module => __MODULE__,
       :function => :switch_up,
       :grammar => :action
     },
     "voun" => %{
       :description => "Switch split down",
-      :module => __MODULE__,
       :function => :switch_down,
       :grammar => :action
     }
