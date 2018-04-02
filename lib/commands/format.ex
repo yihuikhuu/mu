@@ -8,43 +8,43 @@ defmodule Mu.Commands.Format do
   """
 
   @commands %{
-    "shexing" => %{
+    "snik" => %{
       :description => "Write text in snake case",
       :module => __MODULE__,
       :function => :snake_case,
       :grammar => :text
     },
-    "changxing" => %{
+    "coni" => %{
       :description => "Write text in constant case",
       :module => __MODULE__,
       :function => :constant_case,
       :grammar => :text
     },
-    "luoxing" => %{
+    "cami" => %{
       :description => "Write text in camel case",
       :module => __MODULE__,
       :function => :camel_case,
       :grammar => :text
     },
-    "gaoxing" => %{
+    "scali" => %{
       :description => "Write text in pascal case",
       :module => __MODULE__,
       :function => :pascal_case,
       :grammar => :text
     },
-    "lianxing" => %{
+    "skewi" => %{
       :description => "Write text in dash case",
       :module => __MODULE__,
       :function => :dash_case,
       :grammar => :text
     },
-    "dianxing" => %{
+    "dotsi" => %{
       :description => "Write text in dot case",
       :module => __MODULE__,
       :function => :dot_case,
       :grammar => :text
     },
-    "lujing" => %{
+    "pathi" => %{
       :description => "Write text in path case",
       :module => __MODULE__,
       :function => :path_case,

@@ -8,13 +8,13 @@ defmodule Mu.Commands.Snippets do
   """
 
   @commands %{
-    "kuo" => %{
+    "vax" => %{
       :description => "Expand a snippet",
       :module => __MODULE__,
       :function => :expand_snippet,
       :grammar => :single
     },
-    "tiaokuo" => %{
+    "vix" => %{
       :description => "Expand a snippet on a visual selection",
       :module => __MODULE__,
       :function => :expand_visual_snippet,

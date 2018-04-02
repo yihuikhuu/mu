@@ -5,157 +5,169 @@ defmodule Mu.Commands.Motion do
   @behaviour Mu.Core.CommandBehaviour
 
   @commands %{
-    "wangzuo" => %{
+    "meft" => %{
       :description => "Move left by <number>",
       :module => __MODULE__,
       :function => :move_left,
       :grammar => :numeric
     },
-    "wangyou" => %{
+    "mit" => %{
       :description => "Move right by <number>",
       :module => __MODULE__,
       :function => :move_right,
       :grammar => :numeric
     },
-    "wangshang" => %{
+    "mup" => %{
       :description => "Move up by <number>",
       :module => __MODULE__,
       :function => :move_up,
       :grammar => :numeric
     },
-    "wangxia" => %{
+    "moun" => %{
       :description => "Move down by <number>",
       :module => __MODULE__,
       :function => :move_down,
       :grammar => :numeric
     },
-    "qudao" => %{
+    "iku" => %{
       :description => "Move to <number>",
       :module => __MODULE__,
       :function => :move_to,
       :grammar => :numeric
     },
-    "qian" => %{
+    "fi" => %{
       :description => "Move forward a word",
       :module => __MODULE__,
       :function => :forward_word,
       :grammar => :numeric
     },
-    "hou" => %{
+    "bi" => %{
       :description => "Move back a word",
       :module => __MODULE__,
       :function => :back_word,
       :grammar => :numeric
     },
-    "tou" => %{
+    "stine" => %{
       :description => "Move to start of line",
       :module => __MODULE__,
       :function => :start_line,
       :grammar => :action
     },
-    "wei" => %{
+    "eldin" => %{
       :description => "Move to end of line",
       :module => __MODULE__,
       :function => :end_line,
       :grammar => :action
     },
-    "chashang" => %{
+    "kai" => %{
+      :description => "Top of document",
+      :module => __MODULE__,
+      :function => :top,
+      :grammar => :action
+    },
+    "jin" => %{
+      :description => "Bottom of document",
+      :module => __MODULE__,
+      :function => :bottom,
+      :grammar => :action
+    },
+    "abi" => %{
       :description => "Insert above current line",
       :module => __MODULE__,
       :function => :insert_above,
       :grammar => :action
     },
-    "chadi" => %{
+    "beli" => %{
       :description => "Insert below current line",
       :module => __MODULE__,
       :function => :insert_below,
       :grammar => :action
     },
-    "tiaoyi" => %{
+    "seli" => %{
       :description => "Select current character",
       :module => __MODULE__,
       :function => :select,
       :grammar => :action
     },
-    "tiaocheng" => %{
+    "selord" => %{
       :description => "Select current word",
       :module => __MODULE__,
       :function => :select_word,
       :grammar => :action
     },
-    "tiaohang" => %{
+    "seline" => %{
       :description => "Select current line",
       :module => __MODULE__,
       :function => :select_line,
       :grammar => :action
     },
-    "zheng" => %{
+    "forine" => %{
       :description => "Format current line",
       :module => __MODULE__,
       :function => :format_line,
       :grammar => :action
     },
-    "quanzheng" => %{
+    "forall" => %{
       :description => "Format document",
       :module => __MODULE__,
       :function => :format_document,
       :grammar => :action
     },
-    "fuyuan" => %{
+    "desi" => %{
       :description => "Undo",
       :module => __MODULE__,
       :function => :undo,
       :grammar => :numeric
     },
-    "chongzuo" => %{
+    "remi" => %{
       :description => "Redo",
       :module => __MODULE__,
       :function => :redo,
       :grammar => :numeric
     },
-    "shanyi" => %{
+    "dili" => %{
       :description => "Delete",
       :module => __MODULE__,
       :function => :delete,
       :grammar => :numeric
     },
-    "shancheng" => %{
+    "diword" => %{
       :description => "Delete word",
       :module => __MODULE__,
       :function => :delete_word,
       :grammar => :numeric
     },
-    "shanhang" => %{
+    "diline" => %{
       :description => "Delete line",
       :module => __MODULE__,
       :function => :delete_line,
       :grammar => :numeric
     },
-    "gaiyi" => %{
+    "cheli" => %{
       :description => "Change",
       :module => __MODULE__,
       :function => :change,
       :grammar => :action
     },
-    "gaicheng" => %{
+    "cheword" => %{
       :description => "Change word",
       :module => __MODULE__,
       :function => :change_word,
       :grammar => :numeric
     },
-    "gaihang" => %{
+    "cheline" => %{
       :description => "Change line",
       :module => __MODULE__,
       :function => :change_line,
       :grammar => :numeric
     },
-    "jin" => %{
+    "ili" => %{
       :description => "Insert mode",
       :module => __MODULE__,
       :function => :insert_mode,
       :grammar => :action
     },
-    "jia" => %{
+    "ali" => %{
       :description => "Append",
       :module => __MODULE__,
       :function => :append,
@@ -167,38 +179,38 @@ defmodule Mu.Commands.Motion do
       :function => :exit,
       :grammar => :action
     },
-    "fenheng" => %{
+    "hori" => %{
       :description => "Split horizontal",
       :module => __MODULE__,
       :function => :split_horizontal,
       :grammar => :action
     },
-    "fenzhi" => %{
+    "verti" => %{
       :description => "Split vertical",
       :module => __MODULE__,
       :function => :split_vertical,
       :grammar => :action
     },
-    "fenzuo" => %{
+    "veft" => %{
       :description => "Switch split left",
       :module => __MODULE__,
       :function => :switch_left,
       :grammar => :action
     },
-    "fenyou" => %{
+    "vit" => %{
       :description => "Switch split right",
       :module => __MODULE__,
       :function => :switch_right,
       :grammar => :action
     },
-    "fenshang" => %{
+    "vup" => %{
       :description => "Switch split up",
       :module => __MODULE__,
       :function => :switch_up,
       :grammar => :action
     },
-    "fenxia" => %{
-      :description => "Switch split xia",
+    "voun" => %{
+      :description => "Switch split down",
       :module => __MODULE__,
       :function => :switch_down,
       :grammar => :action
@@ -252,6 +264,14 @@ defmodule Mu.Commands.Motion do
 
   def end_line do
     Input.key_list([:escape, :"$"])
+  end
+
+  def top do
+    Input.key_list([:escape, :g, :g])
+  end
+
+  def bottom do
+    Input.key_list([:escape, :G])
   end
 
   def insert_above do
