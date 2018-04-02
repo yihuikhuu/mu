@@ -9,37 +9,30 @@ defmodule Mu.Commands.Format do
 
   @commands %{
     "snik" => %{
-      :description => "Write text in snake case",
       :function => :snake_case,
       :grammar => :text
     },
     "coni" => %{
-      :description => "Write text in constant case",
       :function => :constant_case,
       :grammar => :text
     },
     "cami" => %{
-      :description => "Write text in camel case",
       :function => :camel_case,
       :grammar => :text
     },
     "scali" => %{
-      :description => "Write text in pascal case",
       :function => :pascal_case,
       :grammar => :text
     },
     "skewi" => %{
-      :description => "Write text in dash case",
       :function => :dash_case,
       :grammar => :text
     },
     "dotsi" => %{
-      :description => "Write text in dot case",
       :function => :dot_case,
       :grammar => :text
     },
     "pathi" => %{
-      :description => "Write text in path case",
       :function => :path_case,
       :grammar => :text
     }

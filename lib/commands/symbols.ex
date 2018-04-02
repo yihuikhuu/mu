@@ -9,47 +9,38 @@ defmodule Mu.Commands.Symbols do
 
   @commands %{
     "kong" => %{
-      :description => "space",
       :function => :space,
       :grammar => :action
     },
     "blin" => %{
-      :description => "line break",
       :function => :line_break,
       :grammar => :action
     },
     "tabi" => %{
-      :description => "tab",
       :function => :tab,
       :grammar => :action
     },
     "plex" => %{
-      :description => "parenthesis",
       :function => :parenthesis,
       :grammar => :action
     },
     "brex" => %{
-      :description => "braces",
       :function => :braces,
       :grammar => :action
     },
     "squex" => %{
-      :description => "square brackets",
       :function => :square_brackets,
       :grammar => :action
     },
     "angex" => %{
-      :description => "angle brackets",
       :function => :angle_brackets,
       :grammar => :action
     },
     "dotti" => %{
-      :description => "dot",
       :function => :dot,
       :grammar => :action
     },
     "kama" => %{
-      :description => "comma",
       :function => :comma,
       :grammar => :action
     },
@@ -64,137 +55,110 @@ defmodule Mu.Commands.Symbols do
       :grammar => :action
     },
     "dequal" => %{
-      :description => "double equal",
       :function => :double_equal,
       :grammar => :action
     },
     "teaqual" => %{
-      :description => "triple equal",
       :function => :triple_equal,
       :grammar => :action
     },
     "lani" => %{
-      :description => "less than or equal",
       :function => :less_than_equal,
       :grammar => :action
     },
     "gani" => %{
-      :description => "greater than or equal",
       :function => :greater_than_equal,
       :grammar => :action
     },
     "lan" => %{
-      :description => "less than",
       :function => :less_than,
       :grammar => :action
     },
     "gan" => %{
-      :description => "greater than",
       :function => :greater_than,
       :grammar => :action
     },
     "clon" => %{
-      :description => "colon",
       :function => :colon,
       :grammar => :action
     },
     "slon" => %{
-      :description => "semi colon",
       :function => :semicolon,
       :grammar => :action
     },
     "queso" => %{
-      :description => "question mark",
       :function => :question_mark,
       :grammar => :action
     },
     "swote" => %{
-      :description => "quote",
-      :function => :quote,
+      :function => :single_quote,
       :grammar => :action
     },
     "dwote" => %{
-      :description => "double quote",
       :function => :double_quote,
       :grammar => :action
     },
     "batix" => %{
-      :description => "back ticks",
       :function => :back_ticks,
       :grammar => :action
     },
     "plusi" => %{
-      :description => "plus",
       :function => :plus,
       :grammar => :action
     },
     "plui" => %{
-      :description => "plus plus",
       :function => :plus_plus,
       :grammar => :action
     },
     "maini" => %{
-      :description => "minus",
       :function => :minus,
       :grammar => :action
     },
     "mui" => %{
-      :description => "minus minus",
       :function => :minus_minus,
       :grammar => :action
     },
     "astri" => %{
-      :description => "asterisk",
       :function => :asterisk,
       :grammar => :action
     },
     "divi" => %{
-      :description => "divide",
       :function => :divide,
       :grammar => :action
     },
     "perci" => %{
-      :description => "percentage",
       :function => :percentage,
       :grammar => :action
     },
     "ari" => %{
-      :description => "single arrow",
       :function => :single_arrow,
       :grammar => :action
     },
     "dari" => %{
-      :description => "double arrow",
       :function => :double_arrow,
       :grammar => :action
     },
     "cari" => %{
-      :description => "caret",
       :function => :caret,
       :grammar => :action
     },
     "ami" => %{
-      :description => "ampersand",
       :function => :ampersand,
       :grammar => :action
     },
     "dori" => %{
-      :description => "dollar",
       :function => :dollar,
       :grammar => :action
     },
     "hasi" => %{
-      :description => "hash",
       :function => :hash,
       :grammar => :action
     },
     "aspi" => %{
-      :description => "asperand",
       :function => :asperand,
       :grammar => :action
     },
     "escli" => %{
-      :description => "exclamation mark",
       :function => :exclamation_mark,
       :grammar => :action
     }
@@ -289,7 +253,7 @@ defmodule Mu.Commands.Symbols do
     Input.key_list([:space, :"?", :space])
   end
 
-  def quote do
+  def single_quote do
     Input.key_list([:"'", :"'", :left])
   end
 

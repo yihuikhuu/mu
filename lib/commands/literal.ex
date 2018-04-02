@@ -9,7 +9,6 @@ defmodule Mu.Commands.Literal do
 
   @commands %{
     "asi" => %{
-      :description => "Keep following text",
       :function => :literal,
       :grammar => :unconstrained
     }

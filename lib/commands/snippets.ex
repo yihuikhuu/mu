@@ -9,7 +9,6 @@ defmodule Mu.Commands.Snippets do
 
   @commands %{
     "vax" => %{
-      :description => "Expand a snippet",
       :function => :expand_snippet,
       :grammar => :single
     },

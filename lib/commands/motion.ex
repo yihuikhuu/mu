@@ -6,178 +6,144 @@ defmodule Mu.Commands.Motion do
 
   @commands %{
     "meft" => %{
-      :description => "Move left by <number>",
       :function => :move_left,
       :grammar => :numeric
     },
     "mit" => %{
-      :description => "Move right by <number>",
       :function => :move_right,
       :grammar => :numeric
     },
     "mup" => %{
-      :description => "Move up by <number>",
       :function => :move_up,
       :grammar => :numeric
     },
     "moun" => %{
-      :description => "Move down by <number>",
       :function => :move_down,
       :grammar => :numeric
     },
     "iku" => %{
-      :description => "Move to <number>",
+      :description => "Move to specific line",
       :function => :move_to,
       :grammar => :numeric
     },
     "fi" => %{
-      :description => "Move forward a word",
       :function => :forward_word,
       :grammar => :numeric
     },
     "bi" => %{
-      :description => "Move back a word",
       :function => :back_word,
       :grammar => :numeric
     },
     "stine" => %{
-      :description => "Move to start of line",
       :function => :start_line,
       :grammar => :action
     },
     "eldin" => %{
-      :description => "Move to end of line",
       :function => :end_line,
       :grammar => :action
     },
     "kai" => %{
-      :description => "Top of document",
       :function => :top,
       :grammar => :action
     },
     "jin" => %{
-      :description => "Bottom of document",
       :function => :bottom,
       :grammar => :action
     },
     "abi" => %{
-      :description => "Insert above current line",
       :function => :insert_above,
       :grammar => :action
     },
     "beli" => %{
-      :description => "Insert below current line",
       :function => :insert_below,
       :grammar => :action
     },
     "seli" => %{
-      :description => "Select current character",
       :function => :select,
       :grammar => :action
     },
     "selord" => %{
-      :description => "Select current word",
       :function => :select_word,
       :grammar => :action
     },
     "seline" => %{
-      :description => "Select current line",
       :function => :select_line,
       :grammar => :action
     },
     "forine" => %{
-      :description => "Format current line",
       :function => :format_line,
       :grammar => :action
     },
     "forall" => %{
-      :description => "Format document",
       :function => :format_document,
       :grammar => :action
     },
     "desi" => %{
-      :description => "Undo",
       :function => :undo,
       :grammar => :numeric
     },
     "remi" => %{
-      :description => "Redo",
       :function => :redo,
       :grammar => :numeric
     },
     "dili" => %{
-      :description => "Delete",
       :function => :delete,
       :grammar => :numeric
     },
     "diword" => %{
-      :description => "Delete word",
       :function => :delete_word,
       :grammar => :numeric
     },
     "diline" => %{
-      :description => "Delete line",
       :function => :delete_line,
       :grammar => :numeric
     },
     "cheli" => %{
-      :description => "Change",
       :function => :change,
       :grammar => :action
     },
     "cheword" => %{
-      :description => "Change word",
       :function => :change_word,
       :grammar => :numeric
     },
     "cheline" => %{
-      :description => "Change line",
       :function => :change_line,
       :grammar => :numeric
     },
     "ili" => %{
-      :description => "Insert mode",
       :function => :insert_mode,
       :grammar => :action
     },
     "ali" => %{
-      :description => "Append",
       :function => :append,
       :grammar => :action
     },
     "gui" => %{
-      :description => "Escape",
-      :function => :exit,
+      :function => :escape,
       :grammar => :action
     },
     "hori" => %{
-      :description => "Split horizontal",
       :function => :split_horizontal,
       :grammar => :action
     },
     "verti" => %{
-      :description => "Split vertical",
       :function => :split_vertical,
       :grammar => :action
     },
     "veft" => %{
-      :description => "Switch split left",
-      :function => :switch_left,
+      :function => :switch_split_left,
       :grammar => :action
     },
     "vit" => %{
-      :description => "Switch split right",
-      :function => :switch_right,
+      :function => :switch_split_right,
       :grammar => :action
     },
     "vup" => %{
-      :description => "Switch split up",
-      :function => :switch_up,
+      :function => :switch_split_up,
       :grammar => :action
     },
     "voun" => %{
-      :description => "Switch split down",
-      :function => :switch_down,
+      :function => :switch_split_down,
       :grammar => :action
     }
   }
@@ -355,7 +321,7 @@ defmodule Mu.Commands.Motion do
     Input.key(:a)
   end
 
-  def exit do
+  def escape do
     Input.key(:escape)
   end
 
@@ -367,25 +333,25 @@ defmodule Mu.Commands.Motion do
     Input.key_list([:escape, :":", :v, :s, :enter])
   end
 
-  def switch_left do
+  def switch_split_left do
     Input.key(:escape)
     Input.key_control(:w)
     Input.key(:left)
   end
 
-  def switch_right do
+  def switch_split_right do
     Input.key(:escape)
     Input.key_control(:w)
     Input.key(:right)
   end
 
-  def switch_up do
+  def switch_split_up do
     Input.key(:escape)
     Input.key_control(:w)
     Input.key(:up)
   end
 
-  def switch_down do
+  def switch_split_down do
     Input.key(:escape)
     Input.key_control(:w)
     Input.key(:down)
