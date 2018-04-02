@@ -51,7 +51,7 @@ defmodule Mu.Commands.Symbols do
     },
     "qualis" => %{
       :description => "equal with pre-space",
-      :function => :spaced_equal,
+      :function => :prespace_equal,
       :grammar => :action
     },
     "dequal" => %{

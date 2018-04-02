@@ -35,11 +35,11 @@ defmodule Mu.Core.Util.Number do
     "seventy" => 70,
     "eighty" => 80,
     "ninety" => 90,
-    "hundred" => :math.pow(10, 2),
-    "thousand" => :math.pow(10, 3),
-    "million" => :math.pow(10, 6),
-    "billion" => :math.pow(10, 9),
-    "trillion" => :math.pow(10, 12)
+    "hundred" => trunc(:math.pow(10, 2)),
+    "thousand" => trunc(:math.pow(10, 3)),
+    "million" => trunc(:math.pow(10, 6)),
+    "billion" => trunc(:math.pow(10, 9)),
+    "trillion" => trunc(:math.pow(10, 12))
   }
 
   @multiplier [

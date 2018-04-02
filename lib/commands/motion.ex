@@ -94,7 +94,7 @@ defmodule Mu.Commands.Motion do
       :function => :delete_word,
       :grammar => :numeric
     },
-    "diline" => %{
+    "dilin" => %{
       :function => :delete_line,
       :grammar => :numeric
     },
@@ -106,7 +106,7 @@ defmodule Mu.Commands.Motion do
       :function => :change_word,
       :grammar => :numeric
     },
-    "cheline" => %{
+    "chelin" => %{
       :function => :change_line,
       :grammar => :numeric
     },
