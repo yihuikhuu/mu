@@ -148,7 +148,7 @@ defmodule Mu.Commands.Motion do
     }
   }
 
-  def commands() do
+  def commands do
     @commands
   end
 

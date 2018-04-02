@@ -14,7 +14,7 @@ defmodule Mu.Commands.Literal do
     }
   }
 
-  def commands() do
+  def commands do
     @commands
   end
 

@@ -9,7 +9,7 @@ defmodule Mu.Commands.Terminal do
 
   @commands %{}
 
-  def commands() do
+  def commands do
     @commands
   end
 

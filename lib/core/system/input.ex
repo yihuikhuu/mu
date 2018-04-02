@@ -388,7 +388,7 @@ defmodule Mu.Core.System.Input do
   end
 
   def get_key_combo(key) do
-    "key code " <> 
+    "key code " <>
       cond do
         Map.has_key?(@key_codes, key) ->
           "#{@key_codes[key]}"
@@ -405,7 +405,8 @@ defmodule Mu.Core.System.Input do
   end
 
   def key(key, times \\ 1) do
-    command = get_key_combo(key) 
+    command = get_key_combo(key)
+
     System.cmd("osascript", [
       "-e",
       ~s(tell application "System Events"
@@ -441,7 +442,7 @@ defmodule Mu.Core.System.Input do
   def key_list(keys) do
     commands =
       Enum.reduce(keys, "", fn x, acc ->
-        command = get_key_combo(x) 
+        command = get_key_combo(x)
         acc <> command <> "\n"
       end)
 

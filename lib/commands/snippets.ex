@@ -19,7 +19,7 @@ defmodule Mu.Commands.Snippets do
     }
   }
 
-  def commands() do
+  def commands do
     @commands
   end
 

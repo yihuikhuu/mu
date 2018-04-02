@@ -164,7 +164,7 @@ defmodule Mu.Commands.Symbols do
     }
   }
 
-  def commands() do
+  def commands do
     @commands
   end
 

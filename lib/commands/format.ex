@@ -38,7 +38,7 @@ defmodule Mu.Commands.Format do
     }
   }
 
-  def commands() do
+  def commands do
     @commands
   end
 

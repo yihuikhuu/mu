@@ -36,5 +36,6 @@ config :mu,
     %{name: "Symbols", use: true},
     %{name: "Motion", use: true},
     %{name: "Literal", use: true},
-    %{name: "Snippets", use: true}
+    %{name: "Snippets", use: true},
+    %{name: "Alphabet", use: true}
   ]
