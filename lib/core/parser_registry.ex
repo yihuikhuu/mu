@@ -5,10 +5,17 @@ defmodule Mu.Core.ParserRegistry do
   @doc """
   Starts the registry.
   """
+
+  @module_prefix "Elixir.Mu.Commands."
+
   def start_link(_) do
     commands = load_commands()
     output_vocabulary(commands)
     GenServer.start_link(__MODULE__, commands, name: Mu.Core.ParserRegistry)
+  end
+
+  def format_module_name(name) do
+    String.to_existing_atom(@module_prefix <> name)
   end
 
   def output_vocabulary(commands) do
@@ -37,10 +44,14 @@ defmodule Mu.Core.ParserRegistry do
     Application.get_env(:mu, :command_modules)
     |> Enum.filter(fn x -> Map.has_key?(x, :use) && Map.has_key?(x, :name) && x.use end)
     |> Enum.reduce(%{}, fn x, acc ->
-      Map.merge(
-        acc,
-        apply(String.to_existing_atom("Elixir.Mu.Commands." <> x.name), :commands, [])
-      )
+      apply(format_module_name(x.name), :commands, [])
+      |> Enum.reduce(%{}, fn {k, v = %{}}, acc ->
+        Map.merge(
+          %{k => Map.put(v, :module, format_module_name(x.name))},
+          acc
+        )
+      end)
+      |> Map.merge(acc)
     end)
   end
 
