@@ -387,12 +387,29 @@ defmodule Mu.Core.System.Input do
     ])
   end
 
+  def get_key_combo(key) do
+    cond do
+      Map.has_key?(@key_codes, key) ->
+        "#{@key_codes[key]}"
+
+      Map.has_key?(@key_codes_shift, key) ->
+        "#{@key_codes_shift[key]} using shift down"
+
+      Map.has_key?(@key_codes_option, key) ->
+        "#{@key_codes_option[key]} using option down"
+
+      Map.has_key?(@key_codes_option_shift, key) ->
+        "#{@key_codes_option_shift[key]} using {shift down, option down}"
+    end
+  end
+
   def key(key, times \\ 1) do
+    command = "key code " <> get_key_combo(key) 
     System.cmd("osascript", [
       "-e",
       ~s(tell application "System Events"
           repeat #{times} times 
-           key code #{@key_codes[key]}
+           #{command}
           end repeat
         end tell)
     ])
@@ -423,22 +440,7 @@ defmodule Mu.Core.System.Input do
   def key_list(keys) do
     commands =
       Enum.reduce(keys, "", fn x, acc ->
-        command =
-          "key code " <>
-            cond do
-              Map.has_key?(@key_codes, x) ->
-                "#{@key_codes[x]}"
-
-              Map.has_key?(@key_codes_shift, x) ->
-                "#{@key_codes_shift[x]} using shift down"
-
-              Map.has_key?(@key_codes_option, x) ->
-                "#{@key_codes_option[x]} using option down"
-
-              Map.has_key?(@key_codes_option_shift, x) ->
-                "#{@key_codes_option_shift[x]} using {shift down, option down}"
-            end
-
+        command = "key code " <> get_key_combo(x) 
         acc <> command <> "\n"
       end)
 
