@@ -8,7 +8,7 @@ defmodule Mu.Commands.Alphabet do
   """
 
   @commands %{
-    "alfa " => %{
+    "alfa" => %{
       :function => :alfa,
       :grammar => :action
     },
