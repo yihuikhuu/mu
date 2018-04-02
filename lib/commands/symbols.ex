@@ -86,7 +86,7 @@ defmodule Mu.Commands.Symbols do
       :function => :semicolon,
       :grammar => :action
     },
-    "queso" => %{
+    "quesi" => %{
       :function => :question_mark,
       :grammar => :action
     },
@@ -142,7 +142,7 @@ defmodule Mu.Commands.Symbols do
       :function => :caret,
       :grammar => :action
     },
-    "ami" => %{
+    "ampi" => %{
       :function => :ampersand,
       :grammar => :action
     },
