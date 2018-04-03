@@ -8,8 +8,8 @@ defmodule Mu.Commands.Alphabet do
   """
 
   @commands %{
-    "alfa" => %{
-      :function => :alfa,
+    "alpha" => %{
+      :function => :alpha,
       :grammar => :action
     },
     "bravo" => %{
@@ -118,7 +118,7 @@ defmodule Mu.Commands.Alphabet do
     @commands
   end
 
-  def alfa do
+  def alpha do
     Input.key(:a)
   end
 
