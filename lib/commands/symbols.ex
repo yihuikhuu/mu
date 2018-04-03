@@ -8,7 +8,7 @@ defmodule Mu.Commands.Symbols do
   """
 
   @commands %{
-    "kong" => %{
+    "soos" => %{
       :function => :space,
       :grammar => :action
     },
@@ -24,16 +24,48 @@ defmodule Mu.Commands.Symbols do
       :function => :parenthesis,
       :grammar => :action
     },
+    "plet" => %{
+      :function => :left_parenthesis,
+      :grammar => :action
+    },
+    "plit" => %{
+      :function => :right_parenthesis,
+      :grammar => :action
+    },
     "brex" => %{
       :function => :braces,
+      :grammar => :action
+    },
+    "bret" => %{
+      :function => :left_brace,
+      :grammar => :action
+    },
+    "brit" => %{
+      :function => :right_brace,
       :grammar => :action
     },
     "squex" => %{
       :function => :square_brackets,
       :grammar => :action
     },
+    "squet" => %{
+      :function => :left_square_bracket,
+      :grammar => :action
+    },
+    "squit" => %{
+      :function => :right_square_bracket,
+      :grammar => :action
+    },
     "angex" => %{
       :function => :angle_brackets,
+      :grammar => :action
+    },
+    "anget" => %{
+      :function => :left_angle_bracket,
+      :grammar => :action
+    },
+    "angit" => %{
+      :function => :right_angle_bracket,
       :grammar => :action
     },
     "dotti" => %{
@@ -44,14 +76,12 @@ defmodule Mu.Commands.Symbols do
       :function => :comma,
       :grammar => :action
     },
-    "quali" => %{
-      :description => "equal without pre-space",
-      :function => :equal,
+    "," => %{
+      :function => :comma,
       :grammar => :action
     },
     "qualis" => %{
-      :description => "equal with pre-space",
-      :function => :prespace_equal,
+      :function => :equal,
       :grammar => :action
     },
     "dequal" => %{
@@ -150,7 +180,7 @@ defmodule Mu.Commands.Symbols do
       :function => :dollar,
       :grammar => :action
     },
-    "hasi" => %{
+    "hashi" => %{
       :function => :hash,
       :grammar => :action
     },
@@ -160,6 +190,14 @@ defmodule Mu.Commands.Symbols do
     },
     "escli" => %{
       :function => :exclamation_mark,
+      :grammar => :action
+    },
+    "fasi" => %{
+      :function => :forward_slash,
+      :grammar => :action
+    },
+    "basi" => %{
+      :function => :back_slash,
       :grammar => :action
     }
   }
@@ -180,25 +218,51 @@ defmodule Mu.Commands.Symbols do
     Input.key(:tab)
   end
 
-  # Helper function for handling standard escape/input/move/exit procedure
-  def sequence(keys) do
-    Input.key_list([:escape, :a] ++ keys ++ [:left, :escape])
-  end
-
   def parenthesis do
     Input.key_list([:"(", :")", :left])
+  end
+
+  def left_parenthesis do
+    Input.key(:"(")
+  end
+  def right_parenthesis do
+    Input.key(:")")
   end
 
   def braces do
     Input.key_list([:"{", :"}", :left])
   end
 
+  def left_brace do
+    Input.key(:"{")
+  end
+
+  def right_brace do
+    Input.key(:"}")
+  end
+
   def square_brackets do
     Input.key_list([:"[", :"]", :left])
   end
 
+  def left_square_bracket do
+    Input.key(:"[")
+  end
+
+  def right_square_bracket do
+    Input.key(:"]")
+  end
+
   def angle_brackets do
     Input.key_list([:<, :>, :left])
+  end
+
+  def left_angle_bracket do
+    Input.key(:<)
+  end
+
+  def right_angle_bracket do
+    Input.key(:>)
   end
 
   def dot do
@@ -213,32 +277,28 @@ defmodule Mu.Commands.Symbols do
     Input.key_list([:=, :space])
   end
 
-  def prespace_equal do
-    Input.key_list([:space, :=, :space])
-  end
-
   def double_equal do
-    Input.key_list([:space, :=, :=, :space])
+    Input.key_list([:=, :=, :space])
   end
 
   def triple_equal do
-    Input.key_list([:space, :=, :=, :=, :space])
+    Input.key_list([:=, :=, :=, :space])
   end
 
   def less_than_equal do
-    Input.key_list([:space, :<, :=, :space])
+    Input.key_list([:<, :=, :space])
   end
 
   def greater_than_equal do
-    Input.key_list([:space, :>, :=, :space])
+    Input.key_list([:>, :=, :space])
   end
 
   def less_than do
-    Input.key_list([:space, :<, :space])
+    Input.key_list([:<, :space])
   end
 
   def greater_than do
-    Input.key_list([:space, :>, :space])
+    Input.key_list([:>, :space])
   end
 
   def colon do
@@ -250,7 +310,7 @@ defmodule Mu.Commands.Symbols do
   end
 
   def question_mark do
-    Input.key_list([:space, :"?", :space])
+    Input.key_list([:"?", :space])
   end
 
   def single_quote do
@@ -323,5 +383,13 @@ defmodule Mu.Commands.Symbols do
 
   def exclamation_mark do
     Input.key(:!)
+  end
+
+  def forward_slash do
+    Input.key(:/)
+  end
+
+  def back_slash do
+    Input.key(:\\)
   end
 end

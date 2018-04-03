@@ -101,7 +101,7 @@ defmodule Mu.Commands.Alphabet do
       :grammar => :action
     },
     "x-ray" => %{
-      :function => :x,
+      :function => :xray,
       :grammar => :action
     },
     "yankee" => %{

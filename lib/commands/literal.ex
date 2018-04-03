@@ -8,9 +8,13 @@ defmodule Mu.Commands.Literal do
   """
 
   @commands %{
-    "asi" => %{
+    "liti" => %{
       :function => :literal,
       :grammar => :unconstrained
+    },
+    "cap" => %{
+      :function => :capitalise,
+      :grammar => :single
     }
   }
 
@@ -20,8 +24,14 @@ defmodule Mu.Commands.Literal do
 
   def literal(text \\ nil) do
     if text do
-      Input.key_list([:escape, :a])
       Input.string(text)
+    end
+  end
+
+  def capitalise(text \\ nil) do
+    if text do
+      String.capitalize(text)
+      |> Input.string()
     end
   end
 end

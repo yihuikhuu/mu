@@ -51,7 +51,8 @@ defmodule Mu.Core.Util.Number do
 
   def parse(text) do
     if text do
-      process(text, nil, 0)
+      String.replace(text, "-", " ")
+      |> process(nil, 0)
     else
       nil
     end

@@ -12,7 +12,6 @@ defmodule Mu.Core.Parser do
 
     String.trim(text, "\n")
     |> String.downcase()
-    |> String.replace("-", " ")
     |> process(%{}, [])
     |> execute()
   end

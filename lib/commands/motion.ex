@@ -17,11 +17,11 @@ defmodule Mu.Commands.Motion do
       :function => :move_up,
       :grammar => :numeric
     },
-    "moun" => %{
+    "mon" => %{
       :function => :move_down,
       :grammar => :numeric
     },
-    "iku" => %{
+    "miv" => %{
       :description => "Move to specific line",
       :function => :move_to,
       :grammar => :numeric
@@ -30,7 +30,7 @@ defmodule Mu.Commands.Motion do
       :function => :forward_word,
       :grammar => :numeric
     },
-    "bi" => %{
+    "bez" => %{
       :function => :back_word,
       :grammar => :numeric
     },
@@ -50,11 +50,11 @@ defmodule Mu.Commands.Motion do
       :function => :bottom,
       :grammar => :action
     },
-    "abi" => %{
+    "sai" => %{
       :function => :insert_above,
       :grammar => :action
     },
-    "beli" => %{
+    "sah" => %{
       :function => :insert_below,
       :grammar => :action
     },
@@ -118,7 +118,7 @@ defmodule Mu.Commands.Motion do
       :function => :append,
       :grammar => :action
     },
-    "gui" => %{
+    "eki" => %{
       :function => :escape,
       :grammar => :action
     },
@@ -142,7 +142,7 @@ defmodule Mu.Commands.Motion do
       :function => :switch_split_up,
       :grammar => :action
     },
-    "voun" => %{
+    "von" => %{
       :function => :switch_split_down,
       :grammar => :action
     }
@@ -198,11 +198,11 @@ defmodule Mu.Commands.Motion do
   end
 
   def top do
-    Input.key_list([:escape, :g, :g])
+    Input.key_list([:g, :g])
   end
 
   def bottom do
-    Input.key_list([:escape, :G])
+    Input.key_list([:G])
   end
 
   def insert_above do
@@ -288,7 +288,7 @@ defmodule Mu.Commands.Motion do
   end
 
   def change do
-    Input.key_control(:r)
+    Input.key(:r)
   end
 
   def change_word(times \\ 1) do
